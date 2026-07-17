@@ -66,27 +66,17 @@ function sanitiseForGemini(rawHistory) {
 // Firebase Helpers
 // ===================================
 
-async function getAssignments() {
+async function fetchPortalData(type){
 
-    try {
+    const snapshot =
+        await db.ref(type).once("value");
 
-        const snapshot =
-            await db.ref("assignments").once("value");
-
-        return snapshot.val() || {};
-
-    }
-
-    catch (err) {
-
-        console.error("Assignment Fetch Error", err);
-
-        return {};
-
-    }
+    return snapshot.val() || {};
 
 }
 
+const portalData =
+await fetchPortalData(intent);
 // ================= CHAT ROUTE =================
 app.post("/chat", async (req, res) => {
   const { message, model, history = [], context = "", portalContext = {} } = req.body;
@@ -166,17 +156,44 @@ if (
     assignmentContext =
         "Current Assignments:\n\n";
 
-    Object.values(assignments).forEach(a => {
+    function flattenAssignments(node){
 
-        assignmentContext +=
+    const list=[];
 
+    function walk(obj){
+
+        if(!obj) return;
+
+        if(obj.title){
+
+            list.push(obj);
+
+            return;
+
+        }
+
+        Object.values(obj).forEach(walk);
+
+    }
+
+    walk(node);
+
+    return list;
+
+}
+
+const assignmentList = flattenAssignments(assignments);
+
+assignmentList.forEach(a=>{
+
+    assignmentContext +=
 `Title: ${a.title}
 Course: ${a.course}
 Deadline: ${a.deadline}
 
 `;
 
-    });
+});
 
 }
 
@@ -300,6 +317,22 @@ User:
 
 ${message.trim()}`
 );
+
+    const result =
+await chat.sendMessage(
+
+`${context}
+
+${portalInfo}
+
+${assignmentContext}
+
+User:
+
+${message}`
+);
+
+
       const reply = result.response.text();
 
       console.log("Gemini reply:", reply);
