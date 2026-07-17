@@ -169,32 +169,26 @@ if (badge) {
 
             const chat = ChatManager.getCurrentConversation();
 
-if (
 
-    chat.messages.length === 2 &&
-
-    chat.title === "New Chat"
-
+    if (
+    history.length === 1
 ) {
 
-    const title = await AITitle.generate(
-
-        message,
-
-        response.reply
-
-    );
+    const title =
+        await AIAPI.generateTitle(message);
 
     ChatManager.renameConversation(
 
-        chat.id,
+        ChatManager.getCurrentConversation().id,
 
         title
 
     );
 
+    AIRenderer.renderConversationList();
+
 }
-        AIRenderer.renderConversationList();
+
             AIRenderer.renderMessages();
 
         }

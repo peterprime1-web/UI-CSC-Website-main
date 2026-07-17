@@ -123,7 +123,39 @@ return {
 
     }
 
-    
+    async function generateTitle(firstMessage){
+
+    const response = await fetch("/generate-title",{
+
+        method:"POST",
+
+        headers:{
+
+            "Content-Type":"application/json"
+
+        },
+
+        body:JSON.stringify({
+
+            message:firstMessage,
+
+            model:currentModel
+
+        })
+
+    });
+
+    if(!response.ok){
+
+        throw new Error("Unable to generate title.");
+
+    }
+
+    const data = await response.json();
+
+    return data.title;
+
+}
 
     function getModel(){
 
@@ -151,7 +183,9 @@ localStorage.setItem(
 
         getModel,
 
-        setModel
+        setModel,
+
+        generateTitle
 
     };
 
