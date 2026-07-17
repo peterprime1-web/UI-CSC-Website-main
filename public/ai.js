@@ -1,0 +1,253 @@
+window.CSCAI = (() => {
+
+  Portal.setCurrentPage("ai");
+
+        function init() {
+
+    AIMarkdown.init();
+
+    ChatManager.init();
+
+    AIRenderer.renderConversationList();
+
+    AIRenderer.renderMessages();
+
+    bindEvents();
+
+}
+
+
+    
+    function bindEvents() {
+    document
+    .getElementById("send-btn")
+    ?.addEventListener("click", sendMessage);
+
+    document
+    .getElementById("chat-input")
+    ?.addEventListener("keydown", e => {
+        if(e.key === "Enter" && !e.shiftKey){
+            e.preventDefault();
+            sendMessage();
+        }
+    });
+
+    document
+    .getElementById("new-chat-btn")
+    ?.addEventListener("click", () => {
+        ChatManager.createConversation();
+        AIRenderer.renderConversationList();
+        AIRenderer.renderMessages();
+
+        const input = document.getElementById("chat-input");
+        if (input) {
+            input.value = "";
+            input.focus();
+        }
+    });
+
+    /* ==========================================
+       ADD THIS: Event Delegation for Suggestions 
+       ========================================== */
+    document
+    .getElementById("chat-messages")
+    ?.addEventListener("click", (e) => {
+        // Check if the clicked element (or its parent) is a suggestion card
+        const card = e.target.closest(".suggestion-card");
+        if (!card) return;
+
+        // Get the title text to determine which prompt type to load
+        const title = card.querySelector("h4")?.textContent.trim().toLowerCase();
+        
+        let promptType = "system";
+        if (title.includes("quiz")) promptType = "quiz";
+        else if (title.includes("summarize")) promptType = "summary";
+        else if (title.includes("assignment")) promptType = "assignment";
+
+        // Fetch the custom instructions
+        const student = getCurrentStudent?.() || null;
+        const selectedPrompt = AIPrompts.get(promptType, student);
+
+        // Debug log to verify it's working instantly
+        console.log(`Loaded prompt type: ${promptType}`, selectedPrompt);
+
+        // Optional: Pre-populate the input field with a helpful starter phrase
+        const input = document.getElementById("chat-input");
+        if (input) {
+            if (promptType === "quiz") input.value = "Generate a quiz for me on... ";
+            if (promptType === "summary") input.value = "Please summarize these notes: ";
+            if (promptType === "assignment") input.value = "Help me solve this assignment problem: ";
+            input.focus();
+        }
+    });
+}
+
+    async function sendMessage() {
+
+        const student = getCurrentStudent();
+
+        const systemPrompt =
+
+            AIPrompts.get(
+
+            "system",
+
+            student
+
+            );
+
+        const input =
+            document.getElementById("chat-input");
+
+        if(!input) return;
+
+        const message = input.value.trim();
+       
+        if(!message) return;
+
+        ChatManager.addMessage(
+
+            "user",
+
+            message
+
+        );
+
+        AIRenderer.renderMessages();
+
+        input.value = "";
+
+        AIRenderer.renderTyping();
+
+        try{
+
+            const history =
+                ChatManager
+                .getCurrentConversation()
+                .messages;
+
+            const response =
+                await AIAPI.send(
+
+                    message,
+
+                    history,
+
+                    systemPrompt
+
+                    );
+
+
+            const badge = document.getElementById("ai-provider");
+
+if (badge) {
+
+    badge.textContent = response.model;
+
+}
+
+        if(response.action){
+
+    Portal.execute(response.action);
+
+}
+            AIRenderer.removeTyping();
+
+            ChatManager.addMessage(
+
+                "assistant",
+
+                response.reply
+
+            );
+
+            if(response.action){
+
+    Portal.execute(response.action);
+
+} 
+
+            const chat = ChatManager.getCurrentConversation();
+
+if (
+
+    chat.messages.length === 2 &&
+
+    chat.title === "New Chat"
+
+) {
+
+    const title = await AITitle.generate(
+
+        message,
+
+        response.reply
+
+    );
+
+    ChatManager.renameConversation(
+
+        chat.id,
+
+        title
+
+    );
+
+}
+        AIRenderer.renderConversationList();
+            AIRenderer.renderMessages();
+
+        }
+
+        catch(err){
+
+            AIRenderer.removeTyping();
+
+            ChatManager.addMessage(
+
+                "assistant",
+
+                "⚠️ Unable to contact the AI server."
+
+            );
+
+            AIRenderer.renderMessages();
+
+            console.error(err);
+
+        }
+
+    }
+
+    function initAiMobileToggle() {
+    const toggleBtn = document.getElementById('ai-sidebar-toggle');
+    const aiLayout = document.querySelector('.ai-layout');
+
+    if (toggleBtn && aiLayout) {
+        toggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            aiLayout.classList.toggle('show-sidebar');
+        });
+
+        // Close mobile sidebar automatically if user clicks on the chat space
+        const aiMain = document.querySelector('.ai-main');
+        aiMain?.addEventListener('click', () => {
+            aiLayout.classList.remove('show-sidebar');
+        });
+    }
+}
+
+// Fire toggle handler on DOM load
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAiMobileToggle);
+} else {
+    initAiMobileToggle();
+}
+
+    return{
+
+        init
+
+    };
+
+})();

@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+
+        UI CSC Portal | Student Login
+
+    </title>
+
+    <link
+        rel="icon"
+        href="logo.jpg">
+
+    <link
+        rel="stylesheet"
+        href="student-login.css">
+
+    <!-- Google Font -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Material Icons -->
+
+    <link
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- Animated Background -->
+
+    <div class="background">
+
+        <div class="blob blob-1"></div>
+
+        <div class="blob blob-2"></div>
+
+        <div class="blob blob-3"></div>
+
+    </div>
+
+    <!-- Main Layout -->
+
+    <main class="login-page">
+
+        <!-- LEFT PANEL -->
+
+        <section class="welcome-panel">
+
+            <div class="welcome-content">
+
+                <img
+                    src="logo.jpg"
+                    alt="UI CSC Logo"
+                    class="logo">
+
+                <span class="badge">
+
+                    UNIVERSITY OF IBADAN
+
+                </span>
+
+                <h1>
+
+                    Computer Science Student Portal
+
+                </h1>
+
+                <p>
+
+                    One secure place for lecture notes,
+                    assignments, announcements,
+                    course materials and the CSC AI Assistant.
+
+                </p>
+
+                <div class="highlights">
+
+                    <div class="highlight">
+
+                        <span class="material-icons">
+
+                            school
+
+                        </span>
+
+                        <div>
+
+                            <h4>
+
+                                Academic Resources
+
+                            </h4>
+
+                            <small>
+
+                                Lecture Notes & Materials
+
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                    <div class="highlight">
+
+                        <span class="material-icons">
+
+                            assignment
+
+                        </span>
+
+                        <div>
+
+                            <h4>
+
+                                Assignments
+
+                            </h4>
+
+                            <small>
+
+                                Stay ahead of deadlines
+
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                    <div class="highlight">
+
+                        <span class="material-icons">
+
+                            smart_toy
+
+                        </span>
+
+                        <div>
+
+                            <h4>
+
+                                CSC AI
+
+                            </h4>
+
+                            <small>
+
+                                Your personal study assistant
+
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+                <!-- RIGHT PANEL -->
+
+        <section class="login-panel">
+
+            <div class="login-card">
+
+                <div class="login-header">
+
+                    <h2>
+
+                        Welcome Back
+
+                    </h2>
+
+                    <p>
+
+                        Sign in with your student account.
+
+                    </p>
+
+                </div>
+
+                <form id="student-login-form">
+
+                    <!-- EMAIL -->
+
+                    <div class="input-group">
+
+                        <label for="email">
+
+                            University Email
+
+                        </label>
+
+                        <div class="input-box">
+
+                            <span class="material-icons">
+
+                                mail
+
+                            </span>
+
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="student@stu.ui.edu.ng"
+                                required>
+
+                        </div>
+
+                    </div>
+
+                    <!-- PASSWORD -->
+
+                    <div class="input-group">
+
+                        <label for="password">
+
+                            Password
+
+                        </label>
+
+                        <div class="input-box">
+
+                            <span class="material-icons">
+
+                                lock
+
+                            </span>
+
+                            <input
+                                type="password"
+                                id="password"
+                                placeholder="Enter your password"
+                                required>
+
+                            <button
+                                type="button"
+                                id="toggle-password"
+                                class="password-toggle">
+
+                                <span
+                                    class="material-icons">
+
+                                    visibility
+
+                                </span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <!-- OPTIONS -->
+
+                    <div class="login-options">
+
+                        <label class="remember-me">
+
+                            <input
+                                type="checkbox"
+                                id="remember-me">
+
+                            <span>
+
+                                Remember Me
+
+                            </span>
+
+                        </label>
+
+                        <a
+                            href="#"
+                            id="forgot-password">
+
+                            Forgot Password?
+
+                        </a>
+
+                    </div>
+
+                    <!-- LOGIN BUTTON -->
+
+                    <button
+                        type="submit"
+                        id="login-btn"
+                        class="login-btn">
+
+                        <span
+                            class="material-icons">
+
+                            login
+
+                        </span>
+
+                        Login
+
+                    </button>
+
+                    <!-- LOADING -->
+
+                    <div
+                        id="loading-spinner"
+                        class="loading-spinner hidden">
+
+                        <div class="spinner"></div>
+
+                        <p>
+
+                            Signing you in...
+
+                        </p>
+
+                    </div>
+
+                </form>
+
+                <!-- ==========================
+     ACTIVATE ACCOUNT
+========================== -->
+
+<form
+    id="activate-account-form"
+    class="hidden">
+
+    <div class="login-header">
+
+        <h2>
+
+            Activate Account
+
+        </h2>
+
+        <p>
+
+            First time using the portal?
+            Create your password below.
+
+        </p>
+
+    </div>
+
+    <!-- Matric -->
+
+    <div class="input-group">
+
+        <label>
+
+            Matric Number
+
+        </label>
+
+        <div class="input-box">
+
+            <span class="material-icons">
+
+                badge
+
+            </span>
+
+            <input
+
+                type="text"
+
+                id="activate-matric"
+
+                placeholder="2025XXXXXX"
+
+                required>
+
+        </div>
+
+    </div>
+
+    <!-- Email -->
+
+    <div class="input-group">
+
+        <label>
+
+            University Email
+
+        </label>
+
+        <div class="input-box">
+
+            <span class="material-icons">
+
+                mail
+
+            </span>
+
+            <input
+
+                type="email"
+
+                id="activate-email"
+
+                placeholder="student@stu.ui.edu.ng"
+
+                required>
+
+        </div>
+
+    </div>
+
+    <!-- Password -->
+
+    <div class="input-group">
+
+        <label>
+
+            Create Password
+
+        </label>
+
+        <div class="input-box">
+
+            <span class="material-icons">
+
+                lock
+
+            </span>
+
+            <input
+
+                type="password"
+
+                id="activate-password"
+
+                required>
+
+        </div>
+
+    </div>
+
+    <!-- Confirm -->
+
+    <div class="input-group">
+
+        <label>
+
+            Confirm Password
+
+        </label>
+
+        <div class="input-box">
+
+            <span class="material-icons">
+
+                lock
+
+            </span>
+
+            <input
+
+                type="password"
+
+                id="activate-confirm"
+
+                required>
+
+        </div>
+
+    </div>
+
+    <button
+
+        type="submit"
+
+        class="login-btn">
+
+        <span class="material-icons">
+
+            person_add
+
+        </span>
+
+        Activate Account
+
+    </button>
+
+</form>
+
+<div class="switch-form">
+
+    <p id="login-switch">
+
+        First time here?
+
+        <a href="#" id="show-activate">
+
+            Activate your account
+
+        </a>
+
+    </p>
+
+    <p
+        id="activate-switch"
+        class="hidden">
+
+        Already activated?
+
+        <a href="#" id="show-login">
+
+            Back to Login
+
+        </a>
+
+    </p>
+
+</div>
+
+                <div class="login-footer">
+
+                    <p>
+
+                        Powered by
+
+                        <strong>
+
+                            Department of Computer Science
+
+                        </strong>
+
+                    </p>
+
+                    <small>
+
+                        University of Ibadan
+
+                    </small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Toast Container -->
+
+    <div
+        id="toast-container"
+        class="toast-container">
+
+    </div>
+
+        <!-- Firebase -->
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+
+    <!-- Your Firebase Config -->
+
+    <script src="firebase.js"></script>
+    <script src="student-auth.js"></script>
+
+    <!-- Login Logic -->
+
+    <script src="student-login.js"></script>
+
+</body>
+
+</html>

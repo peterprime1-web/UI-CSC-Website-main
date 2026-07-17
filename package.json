@@ -1,0 +1,31 @@
+{
+  "name": "maintask",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/peterprime1-web/UI-CSC-Website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/peterprime1-web/UI-CSC-Website/issues"
+  },
+  "homepage": "https://github.com/peterprime1-web/UI-CSC-Website#readme",
+  "dependencies": {
+    "@google/genai": "^1.48.0",
+    "@google/generative-ai": "^0.24.1",
+    "cors": "^2.8.5",
+    "dotenv": "^17.4.1",
+    "express": "^5.2.1",
+    "firebase-admin": "^14.1.0",
+    "node-fetch": "^3.3.2"
+  }
+}

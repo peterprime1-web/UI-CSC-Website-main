@@ -1,0 +1,2414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI CSC Portal | Admin</title>
+
+    <link rel="stylesheet" href="admin.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="admin-container">
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-header">
+
+            <div class="logo">
+                <span class="material-icons">school</span>
+                <div>
+                    <h2>UI CSC</h2>
+                    <small>Admin Portal</small>
+                </div>
+            </div>
+
+            <button id="sidebar-toggle">
+                <span class="material-icons">menu</span>
+            </button>
+
+        </div>
+
+        <nav class="sidebar-menu">
+
+            <button class="nav-btn active" data-page="dashboard">
+                <span class="material-icons">dashboard</span>
+                <span>Dashboard</span>
+            </button>
+
+            <button class="nav-btn" data-page="courses">
+                <span class="material-icons">menu_book</span>
+                <span>Courses</span>
+            </button>
+
+            <button class="nav-btn" data-page="notes">
+                <span class="material-icons">description</span>
+                <span>Notes</span>
+            </button>
+
+            <button class="nav-btn" data-page="materials">
+                <span class="material-icons">folder</span>
+                <span>Materials</span>
+            </button>
+
+            <button class="nav-btn" data-page="assignments">
+                <span class="material-icons">assignment</span>
+                <span>Assignments</span>
+            </button>
+
+            <button class="nav-btn" data-page="syllabus">
+                <span class="material-icons">fact_check</span>
+                <span>Syllabus</span>
+            </button>
+
+            <button class="nav-btn" data-page="announcements">
+                <span class="material-icons">campaign</span>
+                <span>Announcements</span>
+            </button>
+
+            <button class="nav-btn" data-page="students">
+                <span class="material-icons">groups</span>
+                <span>Students</span>
+            </button>
+
+            <button class="nav-btn" data-page="admins">
+                <span class="material-icons">admin_panel_settings</span>
+                <span>Admins</span>
+            </button>
+
+            <button class="nav-btn" data-page="settings">
+                <span class="material-icons">settings</span>
+                <span>Settings</span>
+            </button>
+
+            <button class="nav-btn" data-page="activity">
+                <span class="material-icons">history</span>
+                <span>Activity Log</span>
+            </button>
+
+            <button class="nav-btn" data-page="permissions">
+
+    <span class="material-icons">
+        security
+    </span>
+
+    <span>
+        Permissions
+    </span>
+
+</button>
+
+   
+        <div style="text-align: center; margin-top: 15px;">
+            <a href="index.html" style="text-decoration: none; font-size: 0.9rem; color: var(--text-muted); display: inline-flex; align-items: center; gap: 5px;">
+                <span class="material-icons" style="font-size: 1.1rem;">arrow_back</span>
+                Back to Student Portal
+            </a>
+        </div>
+        </nav>
+
+
+        <button id="change-password-menu" class="nav-btn" data-page="change-password">
+
+            
+    <span class="material-icons">
+
+        lock
+
+    </span>
+
+    Change Password
+
+</button>
+
+        <div class="sidebar-footer">
+
+            <button id="logout-btn">
+
+                <span class="material-icons">logout</span>
+
+                <span>Logout</span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div class="left">
+
+                <button id="mobile-menu">
+
+                    <span class="material-icons">menu</span>
+
+                </button>
+
+                <h1 id="page-title">
+                    Dashboard
+                </h1>
+
+            </div>
+
+            <div class="right">
+
+                <button class="icon-btn">
+
+                    <span class="material-icons">
+                        notifications
+                    </span>
+
+                </button>
+
+                <button class="icon-btn">
+
+                    <span class="material-icons">
+                        refresh
+                    </span>
+
+                </button>
+
+               <div class="admin-profile-dropdown">
+
+    <div class="admin-profile" id="admin-profile-btn">
+
+        <img
+            id="admin-avatar"
+            src="https://ui-avatars.com/api/?name=Admin"
+            alt="Admin">
+
+        <div>
+
+            <h4 id="admin-name">Loading...</h4>
+
+            <small id="admin-role">Loading...</small>
+
+        </div>
+
+        <span class="material-icons">
+            expand_more
+        </span>
+
+    </div>
+
+    
+        
+</div>
+
+            </div>
+
+        </header>
+
+        <section class="content-area">
+
+            <section id="dashboard" class="page active-page">
+
+                <div class="dashboard-header">
+
+                    <div>
+                        <h2>Dashboard</h2>
+                        <p>Welcome back. Here's what's happening in your portal.</p>
+                    </div>
+
+                    
+
+                </div>
+
+
+                <div class="stats-grid">
+
+                    <div class="stat-card" data-open="courses">
+                        <span class="material-icons">menu_book</span>
+                        <h2 id="course-count">0</h2>
+                        <p>Courses</p>
+                    </div>
+
+                    <div class="stat-card" data-open="notes">
+                        <span class="material-icons">description</span>
+                        <h2 id="note-count">0</h2>
+                        <p>Notes</p>
+                    </div>
+
+                    <div class="stat-card" data-open="materials">
+                        <span class="material-icons">folder</span>
+                        <h2 id="material-count">0</h2>
+                        <p>Materials</p>
+                    </div>
+
+                    <div class="stat-card" data-open="assignments">
+                        <span class="material-icons">assignment</span>
+                        <h2 id="assignment-count">0</h2>
+                        <p>Assignments</p>
+                    </div>
+
+                    <div class="stat-card" data-open="students">
+                        <span class="material-icons">groups</span>
+                        <h2 id="student-count">0</h2>
+                        <p>Students</p>
+                    </div>
+
+                    <div class="stat-card" data-open="admins">
+                        <span class="material-icons">admin_panel_settings</span>
+                        <h2 id="admin-count">0</h2>
+                        <p>Admins</p>
+                    </div>
+
+                </div>
+
+
+
+                <div class="dashboard-grid">
+
+                    <div class="dashboard-card">
+
+                        <div class="card-header">
+
+                            <h3>Quick Actions</h3>
+
+                        </div>
+
+                        <div class="quick-actions">
+
+                            <button class="action-btn" data-open="notes">
+                                <span class="material-icons">upload_file</span>
+                                Upload Note
+                            </button>
+
+                            <button class="action-btn" data-open="materials">
+                                <span class="material-icons">folder</span>
+                                Upload Material
+                            </button>
+
+                            <button class="action-btn" data-open="assignments">
+                                <span class="material-icons">assignment_add</span>
+                                Add Assignment
+                            </button>
+
+                            <button class="action-btn" data-open="announcements">
+                                <span class="material-icons">campaign</span>
+                                New Announcement
+                            </button>
+
+                            <button class="action-btn" data-open="courses">
+                                <span class="material-icons">add_circle</span>
+                                Add Course
+                            </button>
+
+                            <button class="action-btn" data-open="students">
+                                <span class="material-icons">person_add</span>
+                                Add Student
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="dashboard-card">
+
+                        <div class="card-header">
+
+                            <h3>Recent Activity</h3>
+
+                            <button class="text-btn">
+                                View All
+                            </button>
+
+                        </div>
+
+                        <div id="recent-activity">
+
+                            <div class="activity-item">
+
+                                <span class="material-icons">
+                                    history
+                                </span>
+
+                                <div>
+
+                                    <strong>No activity yet</strong>
+
+                                    <small>
+                                        Actions performed by admins will appear here.
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="dashboard-card">
+
+                        <div class="card-header">
+
+                            <h3>Portal Status</h3>
+
+                        </div>
+
+                        <div class="status-list">
+
+                            <div class="status-item">
+
+                                <span>Firebase</span>
+
+                                <span class="status online">
+                                    Connected
+                                </span>
+
+                            </div>
+
+                            <div class="status-item">
+
+                                <span>Supabase</span>
+
+                                <span class="status online">
+                                    Connected
+                                </span>
+
+                            </div>
+
+                            <div class="status-item">
+
+                                <span>Forum</span>
+
+                                <span class="status online">
+                                    Active
+                                </span>
+
+                            </div>
+
+                            <div class="status-item">
+
+                                <span>AI Server</span>
+
+                                <span class="status online">
+                                    Running
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="dashboard-card">
+
+                        <div class="card-header">
+
+                            <h3>Storage Usage</h3>
+
+                        </div>
+
+                        <div class="storage-widget">
+
+                            <h2 id="storage-used">
+
+                                0 MB
+
+                            </h2>
+
+                            <p>
+
+                                Used of
+
+                                <span id="storage-total">
+
+                                    1 GB
+
+                                </span>
+
+                            </p>
+
+                            <div class="progress">
+
+                                <div
+                                    class="progress-bar"
+                                    id="storage-progress">
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            
+            <!-- ================= COURSES ================= -->
+
+<section id="courses" class="page">
+
+    <div class="page-header">
+
+        <div>
+            <h2>Courses</h2>
+            <p>Manage all departmental courses.</p>
+        </div>
+
+        <div class="header-actions">
+
+            <button class="secondary-btn" id="refresh-courses">
+
+                <span class="material-icons">refresh</span>
+
+                Refresh
+
+            </button>
+
+            <button id="add-course-btn" class="primary-btn">
+    <span class="material-icons">add</span>
+    Add Course
+</button>
+
+        </div>
+
+    </div>
+
+    <div class="admin-card">
+
+        <div class="toolbar">
+
+            <input
+                type="search"
+                id="course-search"
+                placeholder="Search course...">
+
+           <select id="course-level-filter">
+    <option value="100">100 Level</option>
+    <option value="200">200 Level</option>
+    <option value="300">300 Level</option>
+    <option value="400">400 Level</option>
+    <option value="500">500 Level</option>
+</select>
+
+            <select id="course-semester-filter">
+
+                <option value="">All Semesters</option>
+                <option value="First">First Semester</option>
+                <option value="Second">Second Semester</option>
+
+            </select>
+
+        </div>
+
+        <div class="table-wrapper">
+
+            <table class="admin-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Code</th>
+
+                        <th>Title</th>
+
+                        <th>Level</th>
+
+                        <th>Semester</th>
+
+                        <th>Units</th>
+
+                        <th>Resources</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="courses-list">
+
+                    <!-- Generated by admin-courses.js -->
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+            <section id="notes" class="page">
+
+                <div class="page-header">
+
+                    <div>
+                        <h2>Notes</h2>
+                        <p>Upload and manage lecture notes.</p>
+                    </div>
+
+                    <div class="header-actions">
+
+                        <button class="secondary-btn">
+                            <span class="material-icons">refresh</span>
+                            Refresh
+                        </button>
+
+                        <button class="primary-btn" id="add-note-btn">
+
+                            <span class="material-icons">
+                                upload_file
+                            </span>
+
+                            Upload Note
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="admin-card">
+
+                    <div class="toolbar">
+
+                        <input 
+                        type="search"
+                        id="note-search"
+                        placeholder="Search notes...">
+
+
+                        <select id="note-course-filter">
+
+                            <option value="">
+                                All Courses
+                            </option>
+
+                        </select>
+
+
+                        <select id="note-level-filter">
+
+                            <option value="">
+                                All Levels
+                            </option>
+
+                            <option>100</option>
+                            <option>200</option>
+                            <option>300</option>
+                            <option>400</option>
+                            <option>500</option>
+
+                        </select>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="admin-card">
+                    <div class="table-wrapper">
+                    <table class="admin-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Title</th>
+                                <th>Course</th>
+                                <th>Type</th>
+                                <th>Uploaded By</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="notes-table">
+
+
+                            <tr>
+
+                                <td colspan="6">
+
+                                    <div class="empty-state">
+
+                                        <span class="material-icons">
+                                            description
+                                        </span>
+
+                                        <h3>
+                                            No Notes Yet
+                                        </h3>
+
+                                        <p>
+                                            Uploaded notes will appear here.
+                                        </p>
+
+                                    </div>
+
+                                </td>
+
+
+                            </tr>
+
+
+                        </tbody>
+
+
+                    </table>
+                    </div>
+
+                </div>
+
+
+            </section>
+            
+            <section id="materials" class="page">
+
+
+                <div class="page-header">
+
+                    <div>
+
+                        <h2>Materials</h2>
+
+                        <p>
+                            Manage course materials, slides, textbooks and resources.
+                        </p>
+
+                    </div>
+
+
+                    <div class="header-actions">
+
+
+                        <button class="secondary-btn">
+
+                            <span class="material-icons">
+                                refresh
+                            </span>
+
+                            Refresh
+
+                        </button>
+
+
+                        <button 
+                        class="primary-btn"
+                        id="add-material-btn">
+
+
+                            <span class="material-icons">
+                                upload_file
+                            </span>
+
+                            Upload Material
+
+
+                        </button>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="admin-card">
+
+
+                    <div class="toolbar">
+
+
+                        <input
+                        type="search"
+                        id="material-search"
+                        placeholder="Search materials...">
+
+
+
+                        <select id="material-course-filter">
+
+
+                            <option value="">
+
+                                All Courses
+
+                            </option>
+
+
+                        </select>
+
+
+
+                        <select id="material-type-filter">
+
+
+                            <option value="">
+
+                                All Types
+
+                            </option>
+
+
+                            <option value="pdf">
+
+                                PDF
+
+                            </option>
+
+
+                            <option value="video">
+
+                                Video
+
+                            </option>
+
+
+                            <option value="link">
+
+                                External Link
+
+                            </option>
+
+
+                            <option value="document">
+
+                                Document
+
+                            </option>
+
+
+                        </select>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+
+
+                <div class="admin-card">
+
+
+                    <table class="admin-table">
+
+
+                        <thead>
+
+
+                            <tr>
+
+
+                                <th>
+                                    Title
+                                </th>
+
+
+                                <th>
+                                    Course
+                                </th>
+
+
+                                <th>
+                                    Type
+                                </th>
+
+
+                                <th>
+                                    Size
+                                </th>
+
+
+                                <th>
+                                    Uploaded By
+                                </th>
+
+
+                                <th>
+                                    Date
+                                </th>
+
+
+                                <th>
+                                    Actions
+                                </th>
+
+
+                            </tr>
+
+
+                        </thead>
+
+
+
+                        <tbody id="materials-table">
+
+
+                            <tr>
+
+
+                                <td colspan="7">
+
+
+                                    <div class="empty-state">
+
+
+                                        <span class="material-icons">
+                                            folder
+                                        </span>
+
+
+                                        <h3>
+                                            No Materials Yet
+                                        </h3>
+
+
+                                        <p>
+                                            Course resources uploaded by admins will appear here.
+                                        </p>
+
+
+                                    </div>
+
+
+                                </td>
+
+
+                            </tr>
+
+
+                        </tbody>
+
+
+                    </table>
+
+
+                </div>
+
+
+
+            </section>
+
+            
+
+
+                               
+                              
+            <section id="assignments" class="page">
+
+    <div class="page-header">
+
+        <div>
+
+            <h2>Assignments</h2>
+
+            <p>
+
+                Manage coursework and assignment resources.
+
+            </p>
+
+        </div>
+
+        <div class="header-actions">
+
+            <button
+
+                id="refresh-assignments"
+
+                class="secondary-btn">
+
+                <span class="material-icons">
+
+                    refresh
+
+                </span>
+
+                Refresh
+
+            </button>
+
+            <button
+
+                id="add-assignment-btn"
+
+                class="primary-btn">
+
+                <span class="material-icons">
+
+                    assignment_add
+
+                </span>
+
+                Add Assignment
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="admin-card">
+
+        <div class="toolbar">
+
+            <input
+
+                id="assignment-search"
+
+                type="search"
+
+                placeholder="Search assignments...">
+
+            <select id="assignment-level-filter">
+
+                <option value="">
+
+                    All Levels
+
+                </option>
+
+                <option value="100">
+
+                    100 Level
+
+                </option>
+
+                <option value="200">
+
+                    200 Level
+
+                </option>
+
+                <option value="300">
+
+                    300 Level
+
+                </option>
+
+                <option value="400">
+
+                    400 Level
+
+                </option>
+
+                <option value="500">
+
+                    500 Level
+
+                </option>
+
+            </select>
+
+            <select id="assignment-semester-filter">
+
+                <option value="">
+
+                    All Semesters
+
+                </option>
+
+                <option value="First">
+
+                    First Semester
+
+                </option>
+
+                <option value="Second">
+
+                    Second Semester
+
+                </option>
+
+            </select>
+
+            <select id="assignment-status-filter">
+
+                <option value="">
+
+                    All Status
+
+                </option>
+
+                <option value="Open">
+
+                    Open
+
+                </option>
+
+                <option value="Due Today">
+
+                    Due Today
+
+                </option>
+
+                <option value="Closed">
+
+                    Closed
+
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="table-wrapper">
+
+            <table class="admin-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+
+                            Title
+
+                        </th>
+
+                        <th>
+
+                            Course
+
+                        </th>
+
+                        <th>
+
+                            Due Date
+
+                        </th>
+
+                        <th>
+
+                            Status
+
+                        </th>
+
+                        <th>
+
+                            Attachment
+
+                        </th>
+
+                        <th>
+
+                            Uploaded
+
+                        </th>
+
+                        <th>
+
+                            Actions
+
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="assignments-table">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+            <section id="syllabus" class="page">
+
+
+                <div class="page-header">
+
+
+                    <div>
+
+                        <h2>Syllabus</h2>
+
+                        <p>
+                            Upload and manage course syllabi.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="header-actions">
+
+
+                        <button class="secondary-btn">
+
+                            <span class="material-icons">
+                                refresh
+                            </span>
+
+                            Refresh
+
+                        </button>
+
+
+
+                        <button
+                        class="primary-btn"
+                        id="add-syllabus-btn">
+
+
+                            <span class="material-icons">
+                                upload_file
+                            </span>
+
+                            Upload Syllabus
+
+
+                        </button>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+
+
+                <div class="admin-card">
+
+
+                    <div class="toolbar">
+
+
+                        <input
+                        type="search"
+                        id="syllabus-search"
+                        placeholder="Search syllabus...">
+
+    <select id="syllabus-level-filter">
+
+        <option value="">
+
+            All Levels
+
+        </option>
+
+        <option value="100">100</option>
+
+        <option value="200">200</option>
+
+        <option value="300">300</option>
+
+        <option value="400">400</option>
+
+        <option value="500">500</option>
+
+    </select>
+
+    <select id="syllabus-semester-filter">
+
+        <option value="">
+
+            All Semesters
+
+        </option>
+
+        <option value="1">
+
+            First
+
+        </option>
+
+        <option value="2">
+
+            Second
+
+        </option>
+
+    </select>
+
+    
+</div>
+<div class="table-wrapper">
+<table>
+
+    <thead>
+
+        <tr>
+
+            <th>Course</th>
+
+            <th>Title</th>
+
+            <th>Level</th>
+
+            <th>Semester</th>
+
+            <th>PDF</th>
+
+            <th>Uploaded</th>
+
+            <th>Actions</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody id="syllabus-table">
+
+    </tbody>
+
+</table>
+</div>
+            </section>
+
+            <section id="announcements" class="page">   
+
+                <div class="toolbar">
+
+    <div class="search-box">
+
+        <span class="material-icons">search</span>
+
+        <input
+            id="announcement-search"
+            type="text"
+            placeholder="Search announcements...">
+
+    </div>
+
+    <select id="announcement-audience-filter">
+
+        <option value="">All Audiences</option>
+
+        <option value="Everyone">Everyone</option>
+
+        <option value="100">100 Level</option>
+
+        <option value="200">200 Level</option>
+
+        <option value="300">300 Level</option>
+
+        <option value="400">400 Level</option>
+
+        <option value="500">500 Level</option>
+
+    </select>
+
+    <select id="announcement-pinned-filter">
+
+        <option value="">All</option>
+
+        <option value="true">Pinned</option>
+
+        <option value="false">Not Pinned</option>
+
+    </select>
+
+    <button
+        id="refresh-announcements"
+        class="secondary-btn">
+
+        <span class="material-icons">
+
+            refresh
+
+        </span>
+
+    </button>
+
+    <button
+        id="add-announcement-btn"
+        class="primary-btn">
+
+        <span class="material-icons">
+
+            add
+
+        </span>
+
+        Announcement
+
+    </button>
+
+</div>
+
+<div
+    id="announcements-container"
+    class="announcement-grid">
+
+</div>
+            </section>
+
+            <search id="students" class="page">
+            <div class="toolbar">
+
+    <div class="search-box">
+
+        <span class="material-icons">
+
+            search
+
+        </span>
+
+        <input
+
+            id="student-search"
+
+            placeholder="Search students...">
+
+    </div>
+
+    <select id="student-level-filter">
+
+        <option value="">All Levels</option>
+
+        <option value="100">100</option>
+
+        <option value="200">200</option>
+
+        <option value="300">300</option>
+
+        <option value="400">400</option>
+
+        <option value="500">500</option>
+
+    </select>
+
+    <select id="student-status-filter">
+
+        <option value="">All Status</option>
+
+        <option value="Active">Active</option>
+
+        <option value="Suspended">Suspended</option>
+
+    </select>
+
+    <button
+
+        id="refresh-students"
+
+        class="secondary-btn">
+
+        <span class="material-icons">
+
+            refresh
+
+        </span>
+
+    </button>
+
+    <div class="toolbar-actions">
+
+    <button
+        id="download-student-template"
+        class="secondary-btn">
+
+        <span class="material-icons">
+
+            download
+
+        </span>
+
+        Template
+
+    </button>
+
+    <button
+        id="import-students-btn"
+        class="secondary-btn">
+
+        <span class="material-icons">
+
+            upload_file
+
+        </span>
+
+        Import
+
+    </button>
+
+    <input
+
+    type="file"
+
+    id="student-import-file"
+
+    accept=".csv,.xlsx"
+
+    hidden>
+
+    <button
+        id="add-student-btn"
+        class="primary-btn">
+
+        <span class="material-icons">
+
+            person_add
+
+        </span>
+
+        Student
+
+    </button>
+
+</div>
+
+</div>
+<div id="import-progress-container">
+
+    <div id="import-progress-bar"></div>
+
+</div>
+
+<p id="import-progress-text">
+
+    Waiting...
+
+</p>
+
+<div class="table-wrapper">
+
+<table>
+
+    <thead>
+
+        <tr>
+
+            <th>Photo</th>
+
+            <th>Name</th>
+
+            <th>Matric No.</th>
+
+            <th>Level</th>
+
+            <th>Email</th>
+
+            <th>Status</th>
+
+            <th>Actions</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody id="students-table">
+
+    </tbody>
+
+</table>
+
+</div>
+        </section>
+    <!-- =========================================
+     ADMINS
+========================================= -->
+
+<section id="admins" class="page">
+
+    <!-- Header -->
+    <div class="section-header">
+
+        <div>
+
+            <h2>Administrators</h2>
+
+            <p>Manage portal administrators and their roles.</p>
+
+        </div>
+
+        <div class="toolbar-actions">
+
+            <button
+                id="refresh-admins"
+                class="secondary-btn">
+
+                <span class="material-icons">
+
+                    refresh
+
+                </span>
+
+                Refresh
+
+            </button>
+
+            <button
+                id="add-admin-btn"
+                class="primary-btn">
+
+                <span class="material-icons">
+
+                    person_add
+
+                </span>
+
+                Add Admin
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- Toolbar -->
+
+    <div class="admin-toolbar">
+
+        <input
+            id="admin-search"
+            type="search"
+            placeholder="Search administrators...">
+
+        <select id="admin-role-filter">
+
+            <option value="">All Roles</option>
+
+            <option value="Super Admin">
+
+                Super Admin
+
+            </option>
+
+            <option value="Admin">
+
+                Admin
+
+            </option>
+
+            <option value="Moderator">
+
+                Moderator
+
+            </option>
+
+        </select>
+
+        <select id="admin-status-filter">
+
+            <option value="">All Status</option>
+
+            <option value="Active">
+
+                Active
+
+            </option>
+
+            <option value="Disabled">
+
+                Disabled
+
+            </option>
+
+        </select>
+
+    </div>
+
+    <!-- Table -->
+
+    <div class="table-wrapper">
+
+        <table class="admin-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Avatar</th>
+
+                    <th>Name</th>
+
+                    <th>Email</th>
+
+                    <th>Role</th>
+
+                    <th>Status</th>
+
+                    <th>Updated</th>
+
+                    <th>Actions</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="admins-table">
+
+                <tr>
+
+                    <td colspan="7" class="empty-state">
+
+                        <span class="material-icons">
+
+                            admin_panel_settings
+
+                        </span>
+
+                        <h3>
+
+                            No administrators yet
+
+                        </h3>
+
+                        <p>
+
+                            Click "Add Admin" to create one.
+
+                        </p>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================
+     ADMIN MODAL
+========================================= -->
+
+
+  <section id="settings" class="page">
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>Settings</h2>
+
+            <p>Manage portal configuration.</p>
+
+        </div>
+
+        <div class="toolbar-actions">
+
+            <button
+                id="save-settings"
+                class="primary-btn">
+
+                <span class="material-icons">
+
+                    save
+
+                </span>
+
+                Save Settings
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="settings-grid">
+
+        <!-- Portal -->
+
+        <div class="settings-card">
+
+            <h3>Portal</h3>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label>Portal Name</label>
+
+                    <input
+                        id="portal-name"
+                        type="text">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>University</label>
+
+                    <input
+                        id="portal-university"
+                        type="text">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Department</label>
+
+                    <input
+                        id="portal-department"
+                        type="text">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Academic -->
+
+        <div class="settings-card">
+
+            <h3>Academic</h3>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label>Academic Session</label>
+
+                    <input
+                        id="portal-session"
+                        type="text">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Semester</label>
+
+                    <select id="portal-semester">
+
+                        <option>First</option>
+
+                        <option>Second</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- AI -->
+
+        <div class="settings-card">
+
+            <h3>AI</h3>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label>Default Model</label>
+
+                    <select id="portal-ai-model">
+
+                        <option value="gemini">
+
+                            Gemini
+
+                        </option>
+
+                        <option value="groq">
+
+                            Groq
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+
+                        Enable AI
+
+                    </label>
+
+                    <input
+                        id="portal-ai-enabled"
+                        type="checkbox">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Uploads -->
+
+        <div class="settings-card">
+
+            <h3>Uploads</h3>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label>
+
+                        Max Upload Size (MB)
+
+                    </label>
+
+                    <input
+                        id="portal-upload-size"
+                        type="number"
+                        min="1">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Portal Controls -->
+
+        <div class="settings-card">
+
+            <h3>Portal Controls</h3>
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label>
+
+                        Maintenance Mode
+
+                    </label>
+
+                    <input
+                        id="portal-maintenance"
+                        type="checkbox">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>
+
+                        Allow Student Registration
+
+                    </label>
+
+                    <input
+                        id="portal-registration"
+                        type="checkbox">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+    <section id="permissions" class="page">
+
+    <div class="section-header">
+
+        <div>
+
+            <h2>Permissions</h2>
+
+            <p>Manage administrator access.</p>
+
+        </div>
+
+    </div>
+
+    <div class="permissions-layout">
+
+        <!-- LEFT -->
+
+        <div class="permissions-admins">
+
+            <div class="toolbar">
+
+                <input
+                    id="permission-search"
+                    type="search"
+                    placeholder="Search administrators...">
+
+            </div>
+
+            <div
+                id="permissions-admin-list"
+                class="permissions-list">
+
+            </div>
+
+        </div>
+
+        <!-- RIGHT -->
+
+        <div class="permissions-editor">
+
+            <div
+                id="selected-admin-header"
+                class="editor-header">
+
+                <h3>
+
+                    Select an administrator
+
+                </h3>
+
+                <p>
+
+                    Their permissions will appear here.
+
+                </p>
+
+            </div>
+
+            <div
+                id="permission-controls"
+                class="permission-grid">
+
+                <label>
+
+                    Dashboard
+
+                    <input
+                        id="perm-dashboard"
+                        type="checkbox">
+
+                </label>
+
+                <label>
+
+                    Students
+
+                    <input
+                        id="perm-students"
+                        type="checkbox">
+
+                </label>
+
+                <label>
+
+                    Admins
+
+                    <input
+                        id="perm-admins"
+                        type="checkbox">
+
+                </label>
+
+                <label>
+
+                    Courses
+
+                    <input
+                        id="perm-courses"
+                        type="checkbox">
+
+                </label>
+
+                <label>
+
+                    Notes
+
+                    <input
+                        id="perm-notes"
+                        type="checkbox">
+
+                </label>
+
+                <label>
+
+                    Materials
+
+                    <input
+                        id="perm-materials"
+                        type="checkbox">
+
+                </label>
+
+                <label>
+
+                    Assignments
+
+                    <input
+                        id="perm-assignments"
+                        type="checkbox">
+
+                </label>
+
+                <label>
+
+                    Announcements
+
+                    <input
+                        id="perm-announcements"
+                        type="checkbox">
+
+                </label>
+
+                <label>
+
+                    Syllabus
+
+                    <input
+                        id="perm-syllabus"
+                        type="checkbox">
+
+                </label>
+
+                <label>
+
+                    Activity Log
+
+                    <input
+                        id="perm-activity"
+                        type="checkbox">
+
+                </label>
+
+                <label>
+
+                    Settings
+
+                    <input
+                        id="perm-settings"
+                        type="checkbox">
+
+                </label>
+
+                <label>
+
+                    Permissions
+
+                    <input
+                        id="perm-permissions"
+                        type="checkbox">
+
+                </label>
+
+            </div>
+
+            <div class="toolbar-actions">
+
+                <button
+                    id="save-permissions"
+                    class="primary-btn">
+
+                    <span class="material-icons">
+
+                        save
+
+                    </span>
+
+                    Save Changes
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+       <section id="activity" class="page">
+
+    <div class="section-header">
+
+        <div>
+
+            <h2> Activity Log </h2>
+
+            <p>View all administrative activities.</p>
+
+        </div>
+        <button
+    id="clear-activity"
+    class="secondary-btn">
+
+    <span class="material-icons">
+
+        delete_sweep
+
+    </span>
+
+    Clear Log
+
+</button>
+    </div>
+
+    
+
+    <div class="admin-toolbar">
+
+    <input
+        id="activity-search"
+        type="search"
+        placeholder="Search activities...">
+
+    <select id="activity-filter">
+
+        <option value="">All Actions</option>
+
+        <option value="person_add">Added</option>
+
+        <option value="edit">Edited</option>
+
+        <option value="delete">Deleted</option>
+
+        <option value="history">History</option>
+
+        <option value="upload">Uploads</option>
+
+        <option value="assignment">Assignments</option>
+
+        <option value="campaign">Announcements</option>
+
+    </select>
+
+</div>
+    <div class="table-wrapper">
+
+        <table class="admin-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Icon</th>
+
+                    <th>Activity</th>
+
+                    <th>Time</th>
+
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="activity-table">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>     
+
+    </main>
+
+</div>
+
+
+
+<div class="modal-overlay hidden" id="modal-overlay">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <h2 id="modal-title">
+                Modal Title
+            </h2>
+
+            <button
+                class="icon-btn"
+                id="close-modal">
+
+                <span class="material-icons">
+                    close
+                </span>
+
+            </button>
+
+        </div>
+
+        <div
+            class="modal-body"
+            id="modal-body">
+
+            </div>
+
+        <div class="modal-footer">
+
+            <button
+                class="secondary-btn"
+                id="cancel-modal">
+
+                Cancel
+
+            </button>
+
+            <button
+                class="primary-btn"
+                id="save-modal">
+
+                Save
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div
+class="modal-overlay hidden"
+id="delete-overlay">
+
+    <div class="confirm-modal">
+
+        <span class="material-icons warning-icon">
+
+            warning
+
+        </span>
+
+        <h2>
+
+            Delete Item?
+
+        </h2>
+
+        <p id="delete-message">
+
+            This action cannot be undone.
+
+        </p>
+
+        <div class="confirm-buttons">
+
+            <button
+            class="secondary-btn"
+            id="cancel-delete">
+
+                Cancel
+
+            </button>
+
+            <button
+            class="danger-btn"
+            id="confirm-delete">
+
+                Delete
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div
+class="modal-overlay hidden"
+id="image-overlay">
+
+    <div class="image-preview">
+
+        <button
+        class="icon-btn"
+        id="close-image">
+
+            <span class="material-icons">
+
+                close
+
+            </span>
+
+        </button>
+
+        <img
+        id="preview-image"
+        src=""
+        alt="Preview">
+
+    </div>
+
+</div>
+
+<div id="toast-container"></div>
+
+<div
+class="loading-overlay hidden"
+id="loading">
+
+    <div class="spinner"></div>
+
+    <p>
+
+        Processing...
+
+    </p>
+
+</div>
+
+
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+
+<script src="firebase.js"></script>
+<script src="supabase.js"></script>
+
+<script src="admin-utils.js"></script>
+<script src="admin-navigation.js"></script>
+<script src="admin-dashboard.js"></script>
+
+
+<script src="admin-courses.js"></script>
+<script src="admin-notes.js"></script>
+<script src="admin-materials.js"></script>
+<script src="admin-assignments.js"></script>
+<script src="admin-syllabus.js"></script>
+<script src="admin-announcements.js"></script>
+<script src="admin-students.js"></script>
+<script src="admin-admins.js"></script>
+<script src="admin-settings.js"></script>
+<script src="admin-permissions.js"></script>
+<script src="admin-activity.js"></script>
+
+<script src="auth.js"></script>
+<script src="permissions.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

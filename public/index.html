@@ -1,0 +1,2185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport", content="width=device-width, initial-scale=1.0">
+
+    <title>Elite 30 Portal</title>
+
+    <link
+        rel="stylesheet"
+        href="styles.css">
+
+    <link
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- ========================================= -->
+    <!-- LOADING SCREEN -->
+    <!-- ========================================= -->
+
+    <div id="loading-screen">
+
+        <div class="loader"></div>
+
+        <h2>University of Ibadan</h2>
+
+        <p>CSC Student Portal</p>
+
+    </div>
+
+    <!-- ========================================= -->
+    <!-- PORTAL -->
+    <!-- ========================================= -->
+
+    <div class="portal-container">
+
+        <!-- ========================================= -->
+        <!-- SIDEBAR -->
+        <!-- ========================================= -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-header">
+
+                <h2>Elite 30</h2>
+
+                <p>Student Portal</p>
+
+            </div>
+
+            <nav>
+
+                <!-- HOME -->
+
+                <button
+                    class="nav-item active"
+                    data-page="dashboard">
+
+                    <span class="material-icons">
+
+                        dashboard
+
+                    </span>
+
+                    Dashboard
+
+                </button>
+
+                <!-- ========================================= -->
+                <!-- ACADEMICS -->
+                <!-- ========================================= -->
+
+                <div class="nav-group">
+
+                    <h4>Academics</h4>
+
+                    <button
+                        class="nav-item"
+                        data-page="courses"
+                        data-title="Courses">
+
+                        <span class="material-icons">
+
+                            menu_book
+
+                        </span>
+
+                        Courses
+
+                    </button>
+
+                    <button
+                        class="nav-item"
+                        data-page="notes"
+                        data-title="Lecture Notes">
+
+                        <span class="material-icons">
+
+                            description
+
+                        </span>
+
+                        Lecture Notes
+
+                    </button>
+
+                    <button
+                        class="nav-item"
+                        data-page="materials"
+                        data-title="Course Materials">
+
+                        <span class="material-icons">
+
+                            folder
+
+                        </span>
+
+                        Materials
+
+                    </button>
+
+                    <button
+                        class="nav-item"
+                        data-page="assignments"
+                        data-title="Assignments">
+
+                        <span class="material-icons">
+
+                            assignment
+
+                        </span>
+
+                        Assignments
+
+                    </button>
+
+                    <button
+                        class="nav-item"
+                        data-page="syllabus"
+                        data-title="Syllabus">
+
+                        <span class="material-icons">
+
+                            school
+
+                        </span>
+
+                        Syllabus
+
+                    </button>
+
+                </div>
+
+                <!-- ========================================= -->
+                <!-- COMMUNICATION -->
+                <!-- ========================================= -->
+
+                <div class="nav-group">
+
+                    <h4>Communication</h4>
+
+                    <button
+                        class="nav-item"
+                        data-page="announcements"
+                        data-title="Announcements">
+
+                        <span class="material-icons">
+
+                            campaign
+
+                        </span>
+
+                        Announcements
+
+                    </button>
+
+                </div>
+
+                <!-- ========================================= -->
+                <!-- TOOLS -->
+                <!-- ========================================= -->
+
+                <div class="nav-group">
+
+                    <h4>Tools</h4>
+
+                    <button
+                        class="nav-item"
+                        data-page="ai"
+                        data-title="CSC AI">
+
+                        <span class="material-icons">
+
+                            smart_toy
+
+                        </span>
+
+                        CSC AI
+
+                    </button>
+
+                </div>
+
+                <!-- ========================================= -->
+                <!-- ACCOUNT -->
+                <!-- ========================================= -->
+
+                <div class="nav-group">
+
+                    <h4>Account</h4>
+
+                    <button
+                        class="nav-item"
+                        data-page="profile">
+
+                        <span class="material-icons">
+
+                            person
+
+                        </span>
+
+                        Profile
+
+                    </button>
+
+                    <button
+                        class="nav-item"
+                        data-page="settings">
+
+                        <span class="material-icons">
+
+                            settings
+
+                        </span>
+
+                        Settings
+
+                    </button>
+
+                    <button
+                        class="nav-item"
+                        id="logout-btn">
+
+                        <span class="material-icons">
+
+                            logout
+
+                        </span>
+
+                        Logout
+
+                    </button>
+
+                </div>
+
+            </nav>
+
+        </aside>
+
+        <!-- ========================================= -->
+        <!-- MAIN CONTENT -->
+        <!-- ========================================= -->
+
+        <main class="main-content">
+
+            <!-- ========================================= -->
+            <!-- TOP BAR -->
+            <!-- ========================================= -->
+
+            <header class="topbar">
+
+                <div class="topbar-left">
+
+                    <button
+                        class="icon-btn"
+                        id="sidebar-toggle">
+
+                        <span class="material-icons">
+
+                            menu
+
+                        </span>
+
+                    </button>
+
+                    <div>
+
+                        <h2 id="page-title">
+
+                            Dashboard
+
+                        </h2>
+
+                        <small>
+
+                            University of Ibadan Computer Science
+
+                        </small>
+
+                    </div>
+
+                </div>
+
+                <div class="topbar-right">
+
+                    <button
+                        class="icon-btn notification-btn">
+
+                        <span class="material-icons">
+
+                            notifications
+
+                        </span>
+
+                        <span
+                            class="notification-badge"
+                            id="notification-count">
+
+                            0
+
+                        </span>
+
+                    </button>
+                    <div id="notification-panel">
+    <div id="notification-list"></div>
+</div>
+
+                    <button
+                        class="icon-btn"
+                        id="theme-toggle">
+
+                        <span class="material-icons">
+
+                            dark_mode
+
+                        </span>
+
+                    </button>
+
+                    <div class="student-profile">
+
+                       <img
+
+    id="student-avatar"
+
+    src="https://ui-avatars.com/api/?name=Student&background=4A90E2&color=fff"
+
+    alt="Student">
+
+
+                        <div>
+
+                            <h4 id="student-name">
+
+                                Loading...
+
+                            </h4>
+
+                            <small id="student-details">
+
+                                Loading...
+
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+                        <!-- ========================================= -->
+            <!-- DASHBOARD PAGE -->
+            <!-- ========================================= -->
+
+            <section
+                id="dashboard"
+                class="page active">
+
+                <!-- Welcome Card -->
+
+                <div class="welcome-card">
+
+                    <h1>
+
+                        Welcome back,
+
+                        <span id="dashboard-student-name">
+
+                            Student
+
+                        </span>
+
+                        👋
+
+                    </h1>
+
+                    <p>
+
+                        Stay updated with announcements,
+                        assignments and course materials.
+
+                    </p>
+
+                </div>
+
+                <!-- Hero Announcement Slider -->
+
+                <section class="hero-slider">
+
+                    <div class="announcement-slider">
+
+                        <div
+                            class="announcement-card information"
+                            id="announcement-card">
+
+                            <div class="announcement-header">
+
+                                <span
+                                    id="announcement-priority"
+                                    class="announcement-badge">
+
+                                    INFORMATION
+
+                                </span>
+
+                                <span
+                                    id="announcement-date"
+                                    class="announcement-date">
+
+                                    Loading...
+
+                                </span>
+
+                            </div>
+
+                            <h2
+                                id="announcement-title">
+
+                                Loading Announcement...
+
+                            </h2>
+
+                            <p
+                                id="announcement-preview"
+                                class="announcement-preview">
+
+                                Please wait while announcements
+                                are being loaded.
+
+                            </p>
+
+                            <div
+                                class="announcement-footer">
+
+                                <button
+                                    id="announcement-read"
+                                    class="primary-btn">
+
+                                    <span class="material-icons">
+
+                                        article
+
+                                    </span>
+
+                                    Read Full Announcement
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                        <button
+                            class="slider-arrow left"
+                            id="announcement-prev">
+
+                            <span class="material-icons">
+
+                                chevron_left
+
+                            </span>
+
+                        </button>
+
+                        <button
+                            class="slider-arrow right"
+                            id="announcement-next">
+
+                            <span class="material-icons">
+
+                                chevron_right
+
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                    <div
+                        id="slider-dots"
+                        class="slider-dots">
+
+                    </div>
+
+                </section>
+
+                <!-- Statistics -->
+
+                <section class="dashboard-cards">
+
+                    <div class="dashboard-card">
+
+                        <span class="material-icons">
+
+                            menu_book
+
+                        </span>
+
+                        <h2 id="course-count">
+
+                            0
+
+                        </h2>
+
+                        <p>
+
+                            Courses
+
+                        </p>
+
+                    </div>
+
+                    <div class="dashboard-card">
+
+                        <span class="material-icons">
+
+                            description
+
+                        </span>
+
+                        <h2 id="notes-count">
+
+                            0
+
+                        </h2>
+
+                        <p>
+
+                            Notes
+
+                        </p>
+
+                    </div>
+
+                    <div class="dashboard-card">
+
+                        <span class="material-icons">
+
+                            folder
+
+                        </span>
+
+                        <h2 id="materials-count">
+
+                            0
+
+                        </h2>
+
+                        <p>
+
+                            Materials
+
+                        </p>
+
+                    </div>
+
+                    <div class="dashboard-card">
+
+                        <span class="material-icons">
+
+                            assignment
+
+                        </span>
+
+                        <h2 id="assignment-count">
+
+                            0
+
+                        </h2>
+
+                        <p>
+
+                            Assignments
+
+                        </p>
+
+                    </div>
+
+                </section>
+
+                <!-- Dashboard Widgets -->
+
+                <section class="dashboard-grid">
+
+                    <!-- Recent Notes -->
+
+                    <div class="dashboard-widget">
+
+                        <div class="widget-header">
+
+                            <h3>
+
+                                Recent Notes
+
+                            </h3>
+
+                            <button
+                                class="text-btn"
+                                data-page-open="notes">
+
+                                View All
+
+                            </button>
+
+                        </div>
+
+                        <div
+                            id="recent-notes"
+                            class="widget-body">
+
+                            <div class="empty-state">
+
+                                <span class="material-icons">
+
+                                    description
+
+                                </span>
+
+                                <p>
+
+                                    No notes yet.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Assignments -->
+
+                    <div class="dashboard-widget">
+
+                        <div class="widget-header">
+
+                            <h3>
+
+                                Upcoming Assignments
+
+                            </h3>
+
+                            <button
+                                class="text-btn"
+                                data-page-open="assignments">
+
+                                View All
+
+                            </button>
+
+                        </div>
+
+                        <div
+                            id="recent-assignments"
+                            class="widget-body">
+
+                            <div class="empty-state">
+
+                                <span class="material-icons">
+
+                                    assignment
+
+                                </span>
+
+                                <p>
+
+                                    No assignments available.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- AI -->
+
+                    <div class="dashboard-widget ai-widget">
+
+                        <div class="widget-header">
+
+                            <h3>
+
+                                CSC AI
+
+                            </h3>
+
+                        </div>
+
+                        <div class="widget-body">
+
+                            <p>
+
+                                Need help understanding lecture
+                                notes or solving a problem?
+                                Ask CSC AI.
+
+                            </p>
+
+                            <button
+                                id="open-ai"
+                                class="primary-btn">
+
+                                <span class="material-icons">
+
+                                    smart_toy
+
+                                </span>
+
+                                Open CSC AI
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Classes -->
+
+                    <div class="dashboard-widget">
+
+                        <div class="widget-header">
+
+                            <h3>
+
+                                Today's Classes
+
+                            </h3>
+
+                        </div>
+
+                        <div
+                            id="today-classes"
+                            class="widget-body">
+
+                            <div class="empty-state">
+
+                                <span class="material-icons">
+
+                                    event
+
+                                </span>
+
+                                <p>
+
+                                    No classes today.
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+                        <!-- ========================================= -->
+            <!-- COURSES PAGE -->
+            <!-- ========================================= -->
+
+            <section
+                id="courses"
+                class="page">
+
+                <div class="page-header">
+
+                    <h2>Courses</h2>
+
+                    <p>
+                        Your registered courses this session.
+                    </p>
+
+                </div>
+
+                <div
+                    id="courses-grid"
+                    class="content-grid">
+
+                    <div class="empty-state">
+
+                        <span class="material-icons">
+
+                            menu_book
+
+                        </span>
+
+                        <p>
+
+                            No courses available.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ========================================= -->
+            <!-- NOTES PAGE -->
+            <!-- ========================================= -->
+
+           <section id="notes" class="page">
+
+    <div class="page-header">
+
+        <h2>Lecture Notes</h2>
+
+        <p>Browse and download lecture notes.</p>
+
+    </div>
+
+    <div class="materials-toolbar">
+
+        <input
+            id="notes-search"
+            type="text"
+            placeholder="Search notes...">
+
+        <select id="notes-course-filter">
+
+            <option value="all">
+
+                All Courses
+
+            </option>
+
+        </select>
+
+    </div>
+
+    <div
+        id="notes-grid"
+        class="materials-grid">
+
+    </div>
+
+</section>
+            <!-- ========================================= -->
+            <!-- MATERIALS PAGE -->
+            <!-- ========================================= -->
+
+          <section id="materials" class="page">
+
+    <div class="page-header">
+
+        <h2>Course Materials</h2>
+
+        <p>Download lecture slides, notes and other learning resources.</p>
+
+    </div>
+
+    <div class="materials-toolbar">
+
+        <input
+            type="text"
+            id="materials-search"
+            placeholder="Search materials...">
+
+        <select id="materials-course-filter">
+
+            <option value="all">All Courses</option>
+
+        </select>
+
+    </div>
+
+    <div
+        id="materials-grid"
+        class="materials-grid">
+
+    </div>
+
+</section>
+
+
+            <!-- ========================================= -->
+            <!-- ASSIGNMENTS PAGE -->
+            <!-- ========================================= -->
+
+          <section id="assignments" class="page">
+
+    <div class="page-header">
+
+        <h2>Assignments</h2>
+
+        <p>View and download course assignments.</p>
+
+    </div>
+
+    <div class="materials-toolbar">
+
+        <input
+            id="assignments-search"
+            type="text"
+            placeholder="Search assignments...">
+
+        <select id="assignments-course-filter">
+
+            <option value="all">
+                All Courses
+            </option>
+
+        </select>
+
+    </div>
+
+    <div
+        id="assignments-list"
+        class="materials-grid">
+
+    </div>
+
+</section>
+
+            <!-- ========================================= -->
+            <!-- ANNOUNCEMENTS PAGE -->
+            <!-- ========================================= -->
+
+            <section
+                id="announcements"
+                class="page">
+
+                <div class="page-header">
+
+                    <h2>Announcements</h2>
+
+                    <input
+                        id="announcement-search"
+                        type="search"
+                        placeholder="Search announcements...">
+
+                </div>
+
+                <div
+                    id="announcement-list"
+                    class="content-list">
+
+                    <div class="empty-state">
+
+                        <span class="material-icons">
+
+                            campaign
+
+                        </span>
+
+                        <p>
+
+                            No announcements available.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ========================================= -->
+            <!-- SYLLABUS PAGE -->
+            <!-- ========================================= -->
+
+            <section
+                id="syllabus"
+                class="page">
+
+                <div class="page-header">
+
+                    <h2>Course Syllabus</h2>
+
+                    <p>
+
+                        Browse course outlines and weekly plans.
+
+                    </p>
+
+                </div>
+
+                <div
+                    id="syllabus-grid"
+                    class="content-grid">
+
+                    <div class="empty-state">
+
+                        <span class="material-icons">
+
+                            school
+
+                        </span>
+
+                        <p>
+
+                            No syllabus uploaded.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+                        <!-- ========================================= -->
+            <!-- CSC AI -->
+            <!-- ========================================= -->
+
+            <section id="ai" class="page">
+
+    <div class="ai-layout">
+
+        <!-- ===========================
+             SIDEBAR
+        ============================ -->
+
+        <aside class="ai-sidebar">
+
+            <div class="ai-sidebar-header">
+
+                <button id="new-chat-btn" class="new-chat-btn">
+
+                    <span class="material-icons">add</span>
+
+                    <span>New Chat</span>
+
+                </button>
+
+                <div class="ai-search">
+
+                    <span class="material-icons">search</span>
+
+                    <input
+                        type="text"
+                        id="chat-search"
+                        placeholder="Search conversations...">
+
+                </div>
+
+            </div>
+
+            <div id="chat-list" class="chat-list">
+
+                <!-- Conversations rendered here -->
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- ===========================
+                MAIN
+        ============================ -->
+
+        <main class="ai-main">
+
+            <!-- Header -->
+
+            <header class="ai-header">
+    <div style="display: flex; align-items: center; gap: 10px;">
+        
+        <button id="ai-sidebar-toggle" class="ai-toggle-btn">
+            <span class="material-icons">menu</span>
+        </button>
+
+        <div>
+            <h1>CSC AI</h1>
+            <p>University of Ibadan Computer Science Assistant</p>
+        </div>
+    </div>
+
+    <div class="ai-status">
+        <span class="status-dot"></span>
+        <span id="ai-provider">Gemini</span>
+    </div>
+</header>
+
+
+            <!-- Conversation Area -->
+
+            <div
+                id="chat-messages"
+                class="chat-messages">
+
+                <!-- Welcome -->
+
+                <div
+                    id="welcome-screen"
+                    class="welcome-screen">
+
+                    <div class="welcome-icon">
+
+                        <span class="material-icons">
+
+                            smart_toy
+
+                        </span>
+
+                    </div>
+
+                    <h2>
+
+                        Welcome back 👋
+
+                    </h2>
+
+                    <p>
+
+                        Ask anything about programming,
+                        Computer Science,
+                        assignments,
+                        algorithms,
+                        Python,
+                        Java,
+                        C,
+                        Data Structures,
+                        and more.
+
+                    </p>
+
+
+                    <!-- Suggestions -->
+
+                    <div class="ai-suggestions">
+
+                        <button class="suggestion-card">
+
+                            <span class="material-icons">
+
+                                menu_book
+
+                            </span>
+
+                            <h4>
+
+                                Explain a Concept
+
+                            </h4>
+
+                            <small>
+
+                                Break difficult topics down.
+
+                            </small>
+
+                        </button>
+
+                        <button class="suggestion-card">
+
+                            <span class="material-icons">
+
+                                summarize
+
+                            </span>
+
+                            <h4>
+
+                                Summarize Notes
+
+                            </h4>
+
+                            <small>
+
+                                Turn long notes into key points.
+
+                            </small>
+
+                        </button>
+
+                        <button class="suggestion-card">
+
+                            <span class="material-icons">
+
+                                quiz
+
+                            </span>
+
+                            <h4>
+
+                                Generate Quiz
+
+                            </h4>
+
+                            <small>
+
+                                Practice with exam questions.
+
+                            </small>
+
+                        </button>
+
+                        <button class="suggestion-card">
+
+                            <span class="material-icons">
+
+                                code
+
+                            </span>
+
+                            <h4>
+
+                                Help with Code
+
+                            </h4>
+
+                            <small>
+
+                                Debug and explain programs.
+
+                            </small>
+
+                        </button>
+
+                        <button class="suggestion-card">
+
+                            <span class="material-icons">
+
+                                upload_file
+
+                            </span>
+
+                            <h4>
+
+                                Analyze PDF
+
+                            </h4>
+
+                            <small>
+
+                                Ask questions about uploaded notes.
+
+                            </small>
+
+                        </button>
+
+                        <button class="suggestion-card">
+
+                            <span class="material-icons">
+
+                                assignment
+
+                            </span>
+
+                            <h4>
+
+                                Assignment Help
+
+                            </h4>
+
+                            <small>
+
+                                Learn step-by-step solutions.
+
+                            </small>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Input -->
+
+            <footer class="chat-footer">
+
+                <button
+                    id="attach-btn"
+                    class="chat-tool">
+
+                    <span class="material-icons">
+
+                        attach_file
+
+                    </span>
+
+                </button>
+
+                <textarea
+                    id="chat-input"
+                    rows="1"
+                    placeholder="Ask CSC AI anything..."></textarea>
+
+                <button
+                    id="voice-btn"
+                    class="chat-tool">
+
+                    <span class="material-icons">
+
+                        mic
+
+                    </span>
+
+                </button>
+
+                <button
+                    id="send-btn"
+                    class="send-btn">
+
+                    <span class="material-icons">
+
+                        send
+
+                    </span>
+
+                </button>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+</section>
+
+            <!-- ========================================= -->
+            <!-- PROFILE -->
+            <!-- ========================================= -->
+
+            <section id="profile" class="page">
+
+    <div class="page-header">
+
+        <h2>My Profile</h2>
+
+        <p>Your student information and academic summary.</p>
+
+    </div>
+
+    <div class="profile-container">
+
+        <!-- Profile Header -->
+
+        <div class="profile-header">
+
+            <img
+                id="profile-avatar"
+                class="profile-avatar"
+                src="https://ui-avatars.com/api/?name=Student"
+                alt="Student Avatar">
+
+            <h2 id="profile-name">
+
+                Loading...
+
+            </h2>
+
+            <p id="profile-level">
+
+                Loading...
+
+            </p>
+
+            <span
+                id="profile-status"
+                class="profile-status">
+
+                Active
+
+            </span>
+
+        </div>
+
+        <!-- Personal Information -->
+
+        <div class="profile-card">
+
+            <h3>
+
+                Personal Information
+
+            </h3>
+
+            <div class="profile-grid">
+
+                <div class="profile-item">
+
+                    <span class="material-icons">
+
+                        badge
+
+                    </span>
+
+                    <div>
+
+                        <small>Matric Number</small>
+
+                        <strong id="profile-matric">
+
+                            —
+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+                <div class="profile-item">
+
+                    <span class="material-icons">
+
+                        email
+
+                    </span>
+
+                    <div>
+
+                        <small>Email</small>
+
+                        <strong id="profile-email">
+
+                            —
+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+                <div class="profile-item">
+
+                    <span class="material-icons">
+
+                        phone
+
+                    </span>
+
+                    <div>
+
+                        <small>Phone Number</small>
+
+                        <strong id="profile-phone">
+
+                            —
+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+                <div class="profile-item">
+
+                    <span class="material-icons">
+
+                        school
+
+                    </span>
+
+                    <div>
+
+                        <small>Level</small>
+
+                        <strong id="profile-level-text">
+
+                            —
+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Academic Statistics -->
+
+        <div class="profile-card">
+
+            <h3>
+
+                Academic Statistics
+
+            </h3>
+
+            <div class="profile-stats">
+
+                <div class="profile-stat">
+
+                    <h2 id="profile-course-count">
+
+                        0
+
+                    </h2>
+
+                    <span>Courses</span>
+
+                </div>
+
+                <div class="profile-stat">
+
+                    <h2 id="profile-note-count">
+
+                        0
+
+                    </h2>
+
+                    <span>Notes</span>
+
+                </div>
+
+                <div class="profile-stat">
+
+                    <h2 id="profile-material-count">
+
+                        0
+
+                    </h2>
+
+                    <span>Materials</span>
+
+                </div>
+
+                <div class="profile-stat">
+
+                    <h2 id="profile-assignment-count">
+
+                        0
+
+                    </h2>
+
+                    <span>Assignments</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Account Information -->
+
+        <div class="profile-card">
+
+            <h3>
+
+                Account Information
+
+            </h3>
+
+            <div class="profile-grid">
+
+                <div class="profile-item">
+
+                    <span class="material-icons">
+
+                        calendar_today
+
+                    </span>
+
+                    <div>
+
+                        <small>Account Created</small>
+
+                        <strong id="profile-created">
+
+                            —
+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+                <div class="profile-item">
+
+                    <span class="material-icons">
+
+                        update
+
+                    </span>
+
+                    <div>
+
+                        <small>Last Updated</small>
+
+                        <strong id="profile-updated">
+
+                            —
+
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+            <!-- ========================================= -->
+            <!-- SETTINGS -->
+            <!-- ========================================= -->
+
+           <section id="settings" class="page">
+
+    <div class="page-header">
+
+        <h2>Settings</h2>
+
+        <p>Manage your portal preferences and account.</p>
+
+    </div>
+
+    <div class="settings-container">
+
+        <!-- Appearance -->
+
+        <div class="settings-card">
+
+            <h3>Appearance</h3>
+
+            <div class="setting-item">
+
+                <div>
+
+                    <strong>Dark Mode</strong>
+
+                    <p>Switch between light and dark theme.</p>
+
+                </div>
+
+                <label class="switch">
+
+                    <input
+                        type="checkbox"
+                        id="settings-dark-mode">
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+        </div>
+
+        <!-- Account -->
+
+        <div class="settings-card">
+
+            <h3>Account</h3>
+
+            <div class="setting-item">
+
+                <div>
+
+                    <strong>Profile Picture</strong>
+
+                    <p>Upload a new profile picture.</p>
+
+                </div>
+
+                <button
+                    class="primary-btn"
+                    id="change-avatar-btn">
+
+                    <span class="material-icons">
+
+                        photo_camera
+
+                    </span>
+
+                    Change
+
+                </button>
+
+            </div>
+
+            <input
+    type="file"
+    id="avatar-upload"
+    accept="image/*"
+    hidden>
+
+            <div class="setting-item">
+
+                <div>
+
+                    <strong>Password</strong>
+
+                    <p>Update your account password.</p>
+
+                </div>
+
+                <button
+                    class="primary-btn"
+                    id="change-password-btn">
+
+                    <span class="material-icons">
+
+                        lock
+
+                    </span>
+
+                    Change
+
+                </button>
+
+            </div>
+
+            <div class="setting-item">
+
+                <div>
+
+                    <strong>Email</strong>
+
+                    <p id="settings-email">
+
+                        Loading...
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Notifications -->
+
+        <div class="settings-card">
+
+            <h3>Notifications</h3>
+
+            <div class="setting-item">
+
+                <div>
+
+                    <strong>Enable Notifications</strong>
+
+                    <p>Receive portal announcements.</p>
+
+                </div>
+
+                <label class="switch">
+
+                    <input
+                        type="checkbox"
+                        id="settings-notifications">
+
+                    <span class="slider"></span>
+
+                </label>
+
+            </div>
+
+        </div>
+
+        <!-- Portal -->
+
+        <div class="settings-card">
+
+            <h3>Portal</h3>
+
+            <div class="setting-item">
+
+                <div>
+
+                    <strong>Version</strong>
+
+                    <p>
+
+                        UI CSC Portal v1.0.0
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="setting-item">
+
+                <div>
+
+                    <strong>Administrative Access</strong>
+
+                    <p>Switch to the portal administration workspace.</p>
+
+                </div>
+
+                <button
+                    class="primary-btn"
+                    id="admin-login-btn">
+
+                    <span class="material-icons">
+
+                        admin_panel_settings
+
+                    </span>
+
+                    Admin Login
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- Logout -->
+
+        <div class="settings-card danger">
+
+            <button
+                class="danger-btn"
+                id="settings-logout">
+
+                <span class="material-icons">
+
+                    logout
+
+                </span>
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+        </main>
+
+    </div>
+
+    <!-- ========================================= -->
+    <!-- UNIVERSAL MODAL -->
+    <!-- ========================================= -->
+
+    <div
+    class="modal-overlay"
+    id="announcement-modal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div>
+
+                <h2 id="announcement-modal-title"></h2>
+
+                <div class="announcement-meta">
+
+    <span id="announcement-modal-type"></span>
+
+                <small
+                    id="announcement-modal-date">
+
+                </small>
+                </div>
+            </div>
+
+            <button
+                onclick="closeAnnouncement()">
+
+                ✕
+
+            </button>
+
+        </div>
+
+        <div
+            class="modal-content"
+            id="announcement-modal-content">
+<a
+
+    id="announcement-modal-attachment"
+
+    class="primary-btn"
+
+    target="_blank"
+
+    style="display:none; margin-top:20px;">
+
+    📎 View Attachment
+
+</a>
+        </div>
+
+    </div>
+
+</div>
+
+
+  <!-- ========================================= -->
+<!-- UNIVERSAL CONFIRMATION MODAL -->
+<!-- ========================================= -->
+
+<div
+    id="ui-modal"
+    class="ui-modal-overlay">
+
+    <div class="ui-modal">
+
+        <div
+            id="ui-modal-icon"
+            class="ui-modal-icon success">
+
+            <span class="material-icons">
+
+                check_circle
+
+            </span>
+
+        </div>
+
+        <h2 id="ui-modal-title">
+
+            Success
+
+        </h2>
+
+        <p id="ui-modal-message">
+
+            Message goes here.
+
+        </p>
+
+        <div class="ui-modal-actions">
+
+            <button
+                id="ui-modal-cancel"
+                class="secondary-btn">
+
+                Cancel
+
+            </button>
+
+            <button
+                id="ui-modal-confirm"
+                class="primary-btn">
+
+                Continue
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+    <!-- ========================================= -->
+<!-- CHANGE PASSWORD MODAL -->
+<!-- ========================================= -->
+
+<div class="modal-overlay" id="password-modal">
+
+    <div class="modal password-modal">
+
+        <div class="modal-header">
+
+            <h2>Change Password</h2>
+
+            <button onclick="closeModal('password-modal')">
+                ✕
+            </button>
+
+        </div>
+
+        <div class="modal-content">
+
+            <div class="form-group">
+
+    <label>Current Password</label>
+
+    <div class="password-input">
+
+        <input
+            type="password"
+            id="current-password">
+
+        <span
+            class="material-icons password-toggle"
+            data-target="current-password">
+
+            visibility_off
+
+        </span>
+
+    </div>
+
+</div>
+
+            <div class="form-group">
+
+    <label>New Password</label>
+
+    <div class="password-input">
+
+        <input
+            type="password"
+            id="new-password">
+
+        <span
+            class="material-icons password-toggle"
+            data-target="new-password">
+
+            visibility_off
+
+        </span>
+
+    </div>
+
+</div>
+
+           <div class="form-group">
+
+    <label>Confirm Password</label>
+
+    <div class="password-input">
+
+        <input
+            type="password"
+            id="confirm-password">
+
+        <span
+            class="material-icons password-toggle"
+            data-target="confirm-password">
+
+            visibility_off
+
+        </span>
+
+    </div>
+
+</div>
+
+            <div class="modal-actions">
+
+                <button
+                    class="secondary-btn"
+                    onclick="closeModal('password-modal')">
+
+                    Cancel
+
+                </button>
+
+                <button
+                    class="primary-btn"
+                    id="save-password-btn">
+
+                    <span class="material-icons">
+                        lock
+                    </span>
+
+                    Update Password
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+    <!-- ========================================= -->
+    <!-- SCRIPTS -->
+    <!-- ========================================= -->
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+    <!-- Shared -->
+
+    <script src="firebase.js"></script>
+    <script src="supabase.js"></script>
+
+    
+
+    <!-- Modules -->
+     <script src="portal.js"></script>
+    <script src="utils.js"></script>
+    <script src="sidebar.js"></script>
+    <script src="theme.js"></script>
+    <script src="notifications.js"></script>
+    <script src="student-auth.js"></script>
+    <script src="navigation.js"></script>
+    <script src="announcements.js"></script>
+    <script src="notes.js"></script>
+    <script src="announcements-page.js"></script>
+    <script src="materials.js"></script>
+    <script src="dashboard.js"></script>
+    <script src="assignments.js"></script>
+    <script src="syllabus.js"></script>
+    <script src="courses.js"></script>
+    <script src="profile.js"></script>
+    <script src="settings.js"></script>
+    <script src="modal.js"></script>
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+<!-- KaTeX -->
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+
+<script defer
+src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+
+<script defer
+src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+
+<!-- DOMPurify -->
+<script
+src="https://cdn.jsdelivr.net/npm/dompurify@3.2.6/dist/purify.min.js"></script>
+    
+    <script src="ai-actions.js"></script>
+    <script src="chat-utils.js"></script>
+    <script src="storage.js"></script>
+    <script src="chatManager.js"></script>
+    <script src="renderer.js"></script>
+    <script src="markdown.js"></script>
+    <script src="api.js"></script>
+    <script src="ai.js"></script>
+    <script src="prompts.js"></script>
+    <script src="title-api.js"></script>
+
+    
+
+   
+    <!-- Main -->
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>

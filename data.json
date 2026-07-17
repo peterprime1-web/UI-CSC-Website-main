@@ -1,0 +1,29 @@
+{
+  "courses": {},
+
+  "notes": {},
+
+  "materials": {},
+
+  "assignments": {},
+
+  "syllabus": {},
+
+  "announcements": {},
+
+  "students": {},
+
+  "admins": {},
+
+  "activity": {},
+
+  "settings": {
+    "portalName": "UI CSC Portal",
+    "defaultSession": "2026/2027",
+    "defaultSemester": 1,
+    "allowRegistration": true,
+    "maintenanceMode": false,
+    "maxUploadSize": 20
+  }
+}
+

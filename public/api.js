@@ -1,0 +1,158 @@
+window.AIAPI = (() => {
+
+    let currentModel =
+
+localStorage.getItem("aiModel")
+
+|| "gemini"; 
+
+    async function send(message, history = [], systemPrompt = "") {
+
+        try {
+            
+
+            const controller = new AbortController();
+            setTimeout(() => controller.abort(), 30000);
+            const response = await fetch("/chat", {
+
+                method: "POST",
+
+                headers: {
+
+                    "Content-Type": "application/json"
+
+                },
+
+                body: JSON.stringify({
+
+                    message,
+
+                    context: systemPrompt,
+
+                    portalContext: Portal.getCurrentContext(),
+
+                    model: currentModel,
+
+                    history
+
+                }),
+
+                signal: controller.signal
+
+            });
+
+            if(!response.ok){
+
+                throw new Error("Server Error");
+
+            }
+
+            const data = await response.json();
+
+            return {
+
+    reply: data.reply,
+
+    model: data.model,
+
+    action: data.action || null
+
+};
+
+        }
+
+        catch(err){
+
+            console.warn(err);
+
+            currentModel =
+
+                currentModel==="gemini"
+
+                ? "groq"
+
+                : "gemini";
+
+            const retry = await fetch("/chat",{
+
+                method:"POST",
+
+                headers:{
+
+                    "Content-Type":"application/json"
+
+                },
+
+                body:JSON.stringify({
+
+                    message,
+
+                    context: systemPrompt,
+
+                    model:currentModel,
+
+                    history
+
+                })
+
+            });
+
+            if(!retry.ok){
+
+                throw new Error(
+
+                    "AI services unavailable."
+
+                );
+
+            }
+
+            const retryData = await retry.json();
+
+return {
+
+    reply: retryData.reply,
+
+    model: retryData.model,
+
+    action: retryData.action || null
+
+};
+
+        }
+
+    }
+
+    
+
+    function getModel(){
+
+        return currentModel;
+
+    }
+
+    function setModel(model){
+
+         currentModel = model;
+
+localStorage.setItem(
+
+    "aiModel",
+
+    model
+
+);
+
+    }
+
+    return{
+
+        send,
+
+        getModel,
+
+        setModel
+
+    };
+
+})();

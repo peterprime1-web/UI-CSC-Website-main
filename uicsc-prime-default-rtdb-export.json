@@ -1,0 +1,441 @@
+{
+  "activity": {
+    "-OxSIG1uJqtdhiyIIYA-": {
+      "icon": "groups",
+      "time": "13/07/2026, 22:05:38",
+      "timestamp": 1783976738237,
+      "title": "Added Theresa Okafor (123456)"
+    },
+    "-OxSIUru0GlRLtrlQVTb": {
+      "icon": "delete",
+      "time": "13/07/2026, 22:06:38",
+      "timestamp": 1783976798901,
+      "title": "Deleted Theresa Okafor"
+    },
+    "-OxSJsivEV6NbE2YmjDW": {
+      "icon": "edit",
+      "time": "13/07/2026, 22:12:42",
+      "timestamp": 1783977162932,
+      "title": "Updated Peter Afolayan"
+    },
+    "-OxSufw_-3lt2z-T4lHY": {
+      "icon": "person_add",
+      "time": "14/07/2026, 00:57:52",
+      "timestamp": 1783987072174,
+      "title": "Admin Added"
+    },
+    "-OxVOBoWTic7T3BoItE7": {
+      "icon": "delete",
+      "time": "14/07/2026, 12:30:25",
+      "timestamp": 1784028625539,
+      "title": "Admin Deleted"
+    },
+    "-OxVkxxcZWpE3wmA7wss": {
+      "icon": "delete",
+      "time": "14/07/2026, 14:14:37",
+      "timestamp": 1784034877519,
+      "title": "Admin Deleted"
+    },
+    "-OxVl9C-PmWYAX3qXT28": {
+      "icon": "person_add",
+      "time": "14/07/2026, 14:15:27",
+      "timestamp": 1784034927656,
+      "title": "Admin Added"
+    },
+    "-OxWUkbwjdozZPKqA_CU": {
+      "icon": "groups",
+      "time": "14/07/2026, 17:39:04",
+      "timestamp": 1784047144059,
+      "title": "Added Theresa Okafor (254367)"
+    },
+    "-OxWXQaH4XyumS9sPnov": {
+      "icon": "person_add",
+      "time": "14/07/2026, 17:50:44",
+      "timestamp": 1784047844411,
+      "title": "Admin Added"
+    },
+    "-OxWXcXDScbTw-n3Zox7": {
+      "icon": "delete",
+      "time": "14/07/2026, 17:51:37",
+      "timestamp": 1784047897399,
+      "title": "Admin Deleted"
+    },
+    "-OxWYEWZ0qCYr5N5Hv9h": {
+      "icon": "person_add",
+      "time": "14/07/2026, 17:54:17",
+      "timestamp": 1784048057064,
+      "title": "Admin Added"
+    },
+    "-OxWdVZo3GUJ-cm9uleP": {
+      "icon": "delete",
+      "time": "14/07/2026, 18:21:39",
+      "timestamp": 1784049699722,
+      "title": "Admin Deleted"
+    },
+    "-OxWdZXkWhNXCI4X2JAO": {
+      "icon": "person_add",
+      "time": "14/07/2026, 18:21:55",
+      "timestamp": 1784049715975,
+      "title": "Admin Added"
+    },
+    "-OxZPwJOJEjSP5x24k4z": {
+      "icon": "school",
+      "time": "15/07/2026, 07:16:51",
+      "timestamp": 1784096211783,
+      "title": "Added Course: MTH102 - Elementary Calculus"
+    },
+    "-OxZhE6XHEtAWkzxGyId": {
+      "icon": "settings",
+      "time": "15/07/2026, 08:36:47",
+      "timestamp": 1784101007791,
+      "title": "Settings Updated"
+    },
+    "-Ox_4pm4rFIJqmn7tsyS": {
+      "icon": "delete",
+      "time": "15/07/2026, 10:24:17",
+      "timestamp": 1784107457141,
+      "title": "Admin Deleted"
+    },
+    "-Ox_52Js_yEXwBudwTUZ": {
+      "icon": "person_add",
+      "time": "15/07/2026, 10:25:12",
+      "timestamp": 1784107512617,
+      "title": "Admin Added"
+    },
+    "-Ox_6fYFNQFzoTqXNkly": {
+      "icon": "security",
+      "time": "15/07/2026, 10:32:19",
+      "timestamp": 1784107939492,
+      "title": "Updated permissions for Theresa Okafor"
+    },
+    "-Ox_7FDFg35XLpXD0hmx": {
+      "icon": "security",
+      "time": "15/07/2026, 10:34:49",
+      "timestamp": 1784108089700,
+      "title": "Updated permissions for Peter Afolayan"
+    },
+    "-Ox_8QXot9FCv19qlnkm": {
+      "icon": "groups",
+      "time": "15/07/2026, 10:39:58",
+      "timestamp": 1784108398254,
+      "title": "Added Royal Obichukwu (345263)"
+    },
+    "-Ox_CHmP5U54LYShwnHS": {
+      "icon": "person_add",
+      "time": "15/07/2026, 10:56:51",
+      "timestamp": 1784109411753,
+      "title": "Admin Added"
+    },
+    "-Ox_CtiN3IJKHCmTx3z-": {
+      "icon": "security",
+      "time": "15/07/2026, 10:59:30",
+      "timestamp": 1784109570389,
+      "title": "Updated permissions for Royal Obichukwu"
+    },
+    "-Ox_PmU-S2TFzws1wv-l": {
+      "icon": "delete",
+      "time": "15/07/2026, 11:55:48",
+      "timestamp": 1784112948581,
+      "title": "Admin Deleted"
+    },
+    "-Ox_Q7S1sPIhxMMrwIo5": {
+      "icon": "security",
+      "time": "15/07/2026, 11:57:18",
+      "timestamp": 1784113038567,
+      "title": "Updated permissions for Theresa Okafor"
+    },
+    "-OxcgdnhThMeTOtkQBy9": {
+      "icon": "edit",
+      "time": "16/07/2026, 03:12:42",
+      "timestamp": 1784167962895,
+      "title": "Updated Peter Afolayan"
+    },
+    "-Oxf4cQk8PEF7nszkvyh": {
+      "icon": "campaign",
+      "time": "16/07/2026, 14:21:05",
+      "timestamp": 1784208065563,
+      "title": "Added announcement \"Student Portal Under Development\""
+    },
+    "-Oxf6Ra_1dCxj7mDE2r6": {
+      "icon": "campaign",
+      "time": "16/07/2026, 14:29:02",
+      "timestamp": 1784208542521,
+      "title": "Added announcement \"rhje,v\""
+    },
+    "-Oxf6Ywc_bWGp3CGi1rc": {
+      "icon": "delete",
+      "time": "16/07/2026, 14:29:32",
+      "timestamp": 1784208572605,
+      "title": "Deleted announcement \"rhje,v\""
+    },
+    "-OxfrboW15uh0Zypueoi": {
+      "icon": "campaign",
+      "time": "16/07/2026, 17:59:30",
+      "timestamp": 1784221170523,
+      "title": "Added announcement \"Welcome\""
+    },
+    "-Oxfs0wwytLPtUhNIHue": {
+      "icon": "delete",
+      "time": "16/07/2026, 18:01:17",
+      "timestamp": 1784221277558,
+      "title": "Deleted announcement \"Welcome\""
+    },
+    "-OxftGvo7kQydVeJK7Fr": {
+      "icon": "campaign",
+      "time": "16/07/2026, 18:06:45",
+      "timestamp": 1784221605165,
+      "title": "Added announcement \"Welcome\""
+    },
+    "-Oxg4-iLE2_3G0LtzsMf": {
+      "icon": "Uploaded syllabus for COS 103",
+      "time": "16/07/2026, 18:57:59",
+      "timestamp": 1784224679263,
+      "title": "Uploaded syllabus"
+    }
+  },
+  "admins": {
+    "-OxVl98I313ZWvGqizYr": {
+      "avatarUrl": "https://jitrrylswqeiltkngnag.supabase.co/storage/v1/object/public/students/1783977160861-1878v8.jpg",
+      "createdAt": 1784034924441,
+      "email": "petergeniusprime@gmail.com",
+      "name": "Peter Afolayan",
+      "permissions": {
+        "activity": true,
+        "admins": true,
+        "announcements": true,
+        "assignments": true,
+        "courses": true,
+        "dashboard": true,
+        "materials": true,
+        "notes": true,
+        "permissions": true,
+        "settings": true,
+        "students": true,
+        "syllabus": true
+      },
+      "role": "Super Admin",
+      "status": "Active",
+      "studentId": "-OxRtlGvrvBllyfOWQcC",
+      "uid": "gLB6FfmV3ohr9BzHwbl76RePyly1",
+      "updatedAt": 1784034924441
+    },
+    "-Ox_52FAneCIzv0hbVNg": {
+      "avatarUrl": "",
+      "createdAt": 1784107510837,
+      "email": "theresa@gmail.com",
+      "mustChangePassword": false,
+      "name": "Theresa Okafor",
+      "permissions": {
+        "activity": false,
+        "admins": true,
+        "announcements": true,
+        "assignments": false,
+        "courses": false,
+        "dashboard": true,
+        "materials": false,
+        "notes": true,
+        "permissions": true,
+        "settings": true,
+        "students": false,
+        "syllabus": true
+      },
+      "role": "Super Admin",
+      "status": "Active",
+      "studentId": "-OxWUkVC7MSY8JJqa-S9",
+      "uid": "ufjJaqzlJGTDwaGU1OStL230eln2",
+      "updatedAt": 1784107600008
+    }
+  },
+  "announcements": {
+    "-OxREjoySECKVDBB7AC7": {
+      "audience": "Everyone",
+      "createdAt": 1783959038991,
+      "fileName": "",
+      "filePath": "",
+      "fileUrl": "",
+      "message": "Welcome back to school after the semester break",
+      "pinned": false,
+      "title": "Welcome Back Peeps!",
+      "type": "Information",
+      "updatedAt": 1783959038991
+    },
+    "-Oxf4cKBontrUnh6uOEc": {
+      "audience": "Everyone",
+      "createdAt": 1784208065144,
+      "fileName": "",
+      "filePath": "",
+      "fileUrl": "",
+      "message": "The Elite Student portal is still under development. Please bear with us",
+      "pinned": false,
+      "title": "Student Portal Under Development",
+      "type": "Urgent",
+      "updatedAt": 1784208065144
+    },
+    "-OxftGpLK-CUbfjlOdjg": {
+      "audience": "Everyone",
+      "createdAt": 1784221604752,
+      "fileName": "",
+      "filePath": "",
+      "fileUrl": "",
+      "message": "Welccome",
+      "pinned": false,
+      "title": "Welcome",
+      "type": "Urgent",
+      "updatedAt": 1784221604752
+    }
+  },
+  "assignments": {
+    "-OxR7gO_wjRUzA1Hp6Iv": {
+      "course": "COS 103",
+      "description": "",
+      "dueDate": "2026-07-21",
+      "fileName": "atm.py",
+      "filePath": "1783957188347-2uvwm1.py",
+      "fileUrl": "https://jitrrylswqeiltkngnag.supabase.co/storage/v1/object/public/assignments/1783957188347-2uvwm1.py",
+      "level": "100",
+      "semester": "All Semesters",
+      "title": "ATM Simulator",
+      "uploadedAt": 1783957189710
+    }
+  },
+  "courses": {
+    "-OxMj0a-8xxNUgbLRloz": {
+      "code": "COS 103",
+      "level": "100",
+      "semester": "All Semesters",
+      "status": "Active",
+      "title": "Python Programming",
+      "unit": 3
+    },
+    "-OxMjUioiPQdLujPIG99": {
+      "code": "MTH102",
+      "level": "100",
+      "semester": "First",
+      "status": "Active",
+      "title": "Calculus",
+      "unit": 3
+    },
+    "-OxMkLRhMOq53juSWFsY": {
+      "code": "MTH101",
+      "level": "100",
+      "semester": "First",
+      "status": "Active",
+      "title": "Elementary math",
+      "unit": 3
+    },
+    "-OxQ2YSr_3v2Qa7y43mh": {
+      "code": "PHY102",
+      "level": "100",
+      "semester": "Second",
+      "status": "Active",
+      "title": "Elementary Physics 2",
+      "unit": 3
+    },
+    "-OxZPwE6eAS6Ejpl0h3t": {
+      "code": "MTH102",
+      "level": "100",
+      "semester": "First",
+      "status": "Active",
+      "title": "Elementary Calculus",
+      "unit": 2
+    }
+  },
+  "materials": {
+    "-OxQeYl1qQCHprtb4vh5": {
+      "category": "Lecture Slides",
+      "course": "MTH101",
+      "description": "",
+      "fileName": "Compiled MAT111 (_23).pdf",
+      "filePath": "1783949270940-4fclcz.pdf",
+      "fileUrl": "https://jitrrylswqeiltkngnag.supabase.co/storage/v1/object/public/materials/1783949270940-4fclcz.pdf",
+      "level": "100",
+      "semester": "First",
+      "title": "Compiled MTH101 Slides",
+      "uploadedAt": 1783949290179
+    }
+  },
+  "notes": {
+    "-OxQ73ftzaL_OTv6maDr": {
+      "course": "PHY102",
+      "description": "",
+      "fileName": "PHY102Note1.pdf",
+      "filePath": "1783940247858-8zuae7.pdf",
+      "fileUrl": "https://jitrrylswqeiltkngnag.supabase.co/storage/v1/object/public/notes/1783940247858-8zuae7.pdf",
+      "level": "100",
+      "semester": "Second",
+      "title": "First Note",
+      "uploadedAt": 1783940249963
+    }
+  },
+  "settings": {
+    "academicSession": "2025/2026",
+    "allowRegistration": true,
+    "defaultAiModel": "gemini",
+    "defaultSemester": 1,
+    "defaultSession": "2026/2027",
+    "department": "Computer Science",
+    "enableAI": true,
+    "maintenanceMode": false,
+    "maxUploadSize": 20,
+    "portalName": "ELITE 30 PORTAL",
+    "semester": "Second",
+    "university": "Unilversity of Ibadan",
+    "updatedAt": 1784101007489
+  },
+  "students": {
+    "-OxRtlGvrvBllyfOWQcC": {
+      "avatarPath": "1783977160861-1878v8.jpg",
+      "avatarUrl": "https://jitrrylswqeiltkngnag.supabase.co/storage/v1/object/public/students/1783977160861-1878v8.jpg",
+      "createdAt": 1783970054308,
+      "email": "petergeniusprime@gmail.com",
+      "level": "100",
+      "matricNumber": "256579",
+      "name": "Peter Afolayan",
+      "phone": "08061434512",
+      "status": "Active",
+      "updatedAt": 1784167962651
+    },
+    "-OxWUkVC7MSY8JJqa-S9": {
+      "avatarPath": "",
+      "avatarUrl": "",
+      "createdAt": 1784047143565,
+      "email": "theresa@gmail.com",
+      "level": "100",
+      "matricNumber": "254367",
+      "name": "Theresa Okafor",
+      "phone": "08061434512",
+      "status": "Active",
+      "updatedAt": 1784047143565
+    },
+    "-Ox_8QTtESv-AsMJtgm3": {
+      "activatedAt": 1784156696976,
+      "avatarPath": "",
+      "avatarUrl": "",
+      "createdAt": 1784108398003,
+      "email": "royal@gmail.com",
+      "lastLogin": 1784223506977,
+      "level": "100",
+      "matricNumber": "345263",
+      "name": "Royal Obichukwu",
+      "online": false,
+      "phone": "08021345678",
+      "status": "Active",
+      "uid": "KzxYjGFvZeRF1xrCWAZVi4Rbt773",
+      "updatedAt": 1784108398003
+    }
+  },
+  "syllabus": {
+    "-Oxg4-eY3qxpJQiS25_A": {
+      "course": "COS 103",
+      "description": "",
+      "fileName": "8 Work, Energy and Power.pdf",
+      "filePath": "1784224674896-w7zqxm.pdf",
+      "fileUrl": "https://jitrrylswqeiltkngnag.supabase.co/storage/v1/object/public/syllabi/1784224674896-w7zqxm.pdf",
+      "level": "100",
+      "semester": "All Semesters",
+      "title": "Syllabus",
+      "updatedAt": 1784224679022,
+      "uploadedAt": 1784224679022
+    }
+  }
+}
