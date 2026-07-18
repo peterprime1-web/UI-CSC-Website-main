@@ -6110,383 +6110,65 @@ body.dark .password-toggle:hover{
     }
 }
 
-/* =========================================================
-   AI CHAT INPUT PANEL EXPANSION
-========================================================= */
+/* ==========================================================================
+   CONSOLIDATED MOBILE RESPONSIVENESS & AI INTERFACE FIXES
+   ========================================================================== */
 
-/* The main container surrounding the input box and send button */
-.ai-input-container {
-    padding: 16px !important;
-    background: #ffffff;
-    border-top: 1px solid var(--border);
-    display: flex;
-    align-items: flex-end; /* Keeps buttons aligned nicely as the input expands */
-    gap: 12px;
-    width: 100% !important;
-    box-sizing: border-box;
-}
-
-/* Make the textarea/input fields noticeably larger and easier to read */
-.ai-input-container textarea,
-.ai-input-container input[type="text"] {
-    flex: 1;
-    min-height: 50px;       /* Gives it a reliable default height */
-    max-height: 150px;      /* Prevents it from taking up the entire screen when typing a lot */
-    padding: 14px 16px !important;
-    font-size: 16px !important; /* Blocks automatic mobile zooming */
-    line-height: 1.5;
-    border: 1px solid var(--border);
-    border-radius: 12px !important; /* Smooth modern rounded look */
-    resize: vertical;       /* Allows manual resizing on desktop if needed */
-    background: var(--background);
-    outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-/* Subtle focus effect to make it feel premium */
-.ai-input-container textarea:focus,
-.ai-input-container input[type="text"]:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15);
-    background: #fff;
-}
-
-/* Style adjustment for the action button next to the larger input box */
-.ai-input-container .send-btn, 
-.ai-input-container button {
-    height: 50px !important; /* Matches the input min-height perfectly */
-    width: 50px !important;  /* Makes it a clean circle/square action icon button */
-    min-width: 50px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px !important;
-    padding: 0 !important;
-}
-
-/* Mobile-specific adjustments to save vertical space */
+/* --- 1. Global Viewport Safety Blocks --- */
 @media (max-width: 768px) {
-    .ai-input-container {
-        padding: 12px !important; /* Compact container padding on small screens */
-        gap: 8px;
-    }
-    
-    .ai-input-container textarea,
-    .ai-input-container input[type="text"] {
-        min-height: 46px; /* Slightly shorter default size for smaller displays */
-        padding: 10px 14px !important;
+    html, body {
+        width: 100% !important;
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
     }
 
-    .ai-input-container .send-btn, 
-    .ai-input-container button {
-        height: 46px !important;
-        width: 46px !important;
-        min-width: 46px;
+    .portal-container {
+        width: 100% !important;
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+    }
+
+    .main-content {
+        margin-left: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 12px !important;
+        box-sizing: border-box !important;
     }
 }
 
-
-/* =========================================================
-   MOBILE RESPONSIVE CHAT TABLES FIX
-========================================================= */
-
-/* 1. Ensure the parent message bubble handles container clipping cleanly */
-.chat-message, 
-.message-content,
-.ai-main .chat-body {
-    max-width: 100% !important;
-    word-break: break-word; /* Allow long words to break if necessary */
-    overflow-wrap: break-word;
-}
-
-/* 2. Container setup to handle responsive horizontal tables */
-.message-content table {
-    display: block !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    overflow-x: auto !important; /* Adds smooth finger scrolling for wide tables */
-    -webkit-overflow-scrolling: touch; /* Butter-smooth momentum scrolling on iOS */
-    border-collapse: collapse;
-    margin: 12px 0 !important;
-    box-sizing: border-box;
-}
-
-/* 3. Style text behaviors inside cells to force text wrapping */
-.message-content th,
-.message-content td {
-    min-width: 80px; /* Prevents cells from becoming completely squished */
-    white-space: normal !important; /* Overrides 'nowrap' behaviors */
-    word-break: break-word !important;
-    overflow-wrap: break-word !important;
-    padding: 8px 10px !important;
-    font-size: 0.9rem !important; /* Slightly more compact font sizing for mobile screens */
-}
-
-/* Optional Custom Scrollbar formatting for the table overflow container */
-.message-content table::-webkit-scrollbar {
-    height: 4px; /* Thin horizontal scrollbar marker line */
-}
-
-.message-content table::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.15);
-    border-radius: 4px;
-}
-
-body.dark .message-content table::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.15);
-}
-
-/* =========================================================
-   BULLETPROOF FLEXBOX & TABLE CONTAINMENT FIX
-========================================================= */
-
-/* 1. Force the layout containers and bubbles to allow shrinking */
+/* --- 2. Structural AI Viewport Lockdown (Strict Table Wrapping Fix) --- */
+#ai.page.active,
+.ai-layout,
 .ai-main,
 .chat-body,
 .chat-container,
 .chat-message,
-.message-content,
-.message-bubble {
-    min-width: 0 !important; /* CRITICAL: Breaks flexbox rigid width calculation */
-    max-width: 100% !important;
+.message-bubble,
+.message-content {
+    min-width: 0 !important;      /* Forces browser layout engines to allow shrinking */
+    max-width: 100% !important;    /* Locks layout frame parameters */
 }
 
-/* 2. Lock down the markdown/text wrapper inside the chat bubble */
+.chat-body,
+.chat-container {
+    overflow-x: hidden !important; /* Disallows horizontal shift gestures on message lists */
+}
+
 .message-content {
     width: 100% !important;
-    overflow-x: hidden; /* Prevent text overflow */
-}
-
-/* 3. Strict structural table confinement rules */
-.message-content table {
-    display: block !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    overflow-x: auto !important; /* Force a native mobile swipe scrollbar */
-    white-space: nowrap; /* Keep table cells structural while scrolling */
-    border-collapse: collapse;
-    margin: 12px 0 !important;
-    -webkit-overflow-scrolling: touch;
-}
-
-/* 4. Let table cells drop to smaller sizes and wrap if needed */
-.message-content th,
-.message-content td {
-    padding: 6px 10px !important;
-    font-size: 0.85rem !important;
-    border: 1px solid var(--border);
-    white-space: normal !important; /* Allow normal wrapping inside cells */
-    word-break: break-word !important;
-}
-
-/* =========================================================
-   STRICT CHAT VIEWPORT LOCKDOWN (TABLE FIX)
-========================================================= */
-
-/* Force the outer AI workspace to strictly lock to the device width */
-.ai-layout {
-    display: flex !important;
-    width: 100% !important;
-    max-width: 100vw !important; /* Prevents stretching past visible screen width */
-    height: calc(100vh - 70px) !important; /* Adjust based on topbar height if needed */
-    position: relative !important;
-    overflow: hidden !important; /* Locks structural bounds tightly */
-}
-
-/* Force the main chat display area to fill but never exceed its viewport block */
-.ai-main {
-    flex: 1 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    width: 100% !important;
-    min-width: 0 !important; /* CRITICAL: Allows flex items to shrink below text width */
-    max-width: 100% !important;
     overflow: hidden !important;
 }
 
-/* Ensure the scrollable chat body respects the strict parental boundaries */
-.chat-body,
-.chat-container {
-    flex: 1 !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-    overflow-y: auto !important; /* Normal vertical message scroll */
-    overflow-x: hidden !important; /* BLOCKS horizontal message container shifting */
-}
-
-/* Lock the message bubble down completely */
-.chat-message,
-.message-bubble {
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-    box-sizing: border-box !important;
-}
-
-/* Force the table container inside the text wrapper to catch all extra space */
+/* Strict Table Confinement Box Layout */
 .message-content table {
-    display: block !important;
+    display: block !important;     /* Changes formatting context so table respects boundaries */
     width: 100% !important;
     max-width: 100% !important;
-    overflow-x: auto !important; /* Native gesture scrolling active inside bubble boundary */
-    -webkit-overflow-scrolling: touch;
-    border-collapse: collapse;
-    margin: 12px 0 !important;
-}
-
-/* =========================================================
-   BULLETPROOF TABLE & CONTAINER CONTAINMENT OVERRIDES
-========================================================= */
-
-/* 1. Lock down the structural layout of the AI page container */
-.ai-layout {
-    display: grid !important;
-    grid-template-columns: 320px 1fr !important;
-    gap: 24px !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important; /* Forces layout tracking engines to permit shrinking */
-}
-
-/* 2. Absolute constraint rules applied down the entire DOM tree */
-.ai-main,
-.chat-body,
-.chat-container,
-.chat-message,
-.message-bubble,
-.message-content {
-    min-width: 0 !important;   /* CRITICAL: Stops components from expanding to text width */
-    max-width: 100% !important;  /* Locks structural container bounding limits */
-}
-
-/* 3. Tame the structural behavior of the chat message wrapper */
-.message-content {
-    width: 100% !important;
-    overflow: hidden !important; /* Stops content from creating secondary page spaces */
-}
-
-/* 4. Complete table confinement architecture */
-.message-content table {
-    display: block !important;    /* Changes table format so max-width is respected */
-    width: 100% !important;
-    max-width: 100% !important;
-    overflow-x: auto !important;   /* Forces structural desktop/mobile swipe-scrolling */
-    white-space: nowrap !important;/* Maintains standard table rows inside the scroll container */
+    overflow-x: auto !important;    /* Forces localized finger scrolling inside message bubble */
+    white-space: nowrap !important; /* Preserves structure grid rows layout alignment */
     border-collapse: collapse;
     margin: 14px 0 !important;
-    -webkit-overflow-scrolling: touch;
-}
-
-/* Ensure mobile media query overrides enforce this */
-@media (max-width: 768px) {
-    .ai-layout {
-        grid-template-columns: 1fr !important; /* Stack elements on mobile views */
-        width: 100% !important;
-        max-width: 100vw !important;
-    }
-}
-
-/* =========================================================
-   CSC AI ATTACHMENT BUTTON INTERFACE
-========================================================= */
-
-.attachment-btn {
-    width: 50px;
-    height: 50px;
-    min-width: 50px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--background);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    color: var(--text-light);
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-/* Hover & Focus state feedback animations */
-.attachment-btn:hover {
-    background: #eef5ff;
-    color: var(--primary);
-    border-color: rgba(74, 144, 226, 0.4);
-    transform: translateY(-1px);
-}
-
-.attachment-btn:active {
-    transform: translateY(0) scale(0.98);
-}
-
-/* Adjust sizes for mobile viewports */
-@media (max-width: 768px) {
-    .attachment-btn {
-        width: 46px;
-        height: 46px;
-        min-width: 46px;
-        border-radius: 10px;
-    }
-    
-    .attachment-btn .material-icons {
-        font-size: 20px;
-    }
-}
-
-/* Dark mode compatibility system rules */
-body.dark .attachment-btn {
-    background: #242931;
-    border-color: #3b4048;
-    color: #b5b5b5;
-}
-
-body.dark .attachment-btn:hover {
-    background: #2c323c;
-    color: #4a90e2;
-    border-color: #4a90e2;
-}
-
-/* =========================================================
-   FINAL EXPERT CONTAINER RESTRAINT & ATTACHMENT SYSTEM
-========================================================= */
-
-/* 1. Force absolute constraint mechanics directly onto the view wrappers */
-#ai.page.active,
-.ai-layout,
-.ai-main {
-    width: 100% !important;
-    max-width: 100vw !important;
-    min-width: 0 !important; /* Forces layout to yield to screen contraction */
-    box-sizing: border-box !important;
-}
-
-/* 2. Freeze horizontal shift mechanics inside the message history view */
-.chat-body,
-.chat-container {
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-    overflow-x: hidden !important; /* Prevents the body from stretching out */
-}
-
-/* 3. Wrap bubble containers completely */
-.chat-message,
-.message-bubble,
-.message-content {
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-    box-sizing: border-box !important;
-}
-
-/* 4. Force tables to build inline scroll bars rather than expand parent container */
-.message-content table {
-    display: block !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    overflow-x: auto !important;
-    white-space: nowrap !important;
-    border-collapse: collapse;
-    margin: 12px 0 !important;
     -webkit-overflow-scrolling: touch;
 }
 
@@ -6494,14 +6176,29 @@ body.dark .attachment-btn:hover {
 .message-content td {
     padding: 8px 12px !important;
     border: 1px solid var(--border);
-    white-space: normal !important; /* Allows internal table text cell warping */
+    white-space: normal !important; /* Enables smooth paragraph lines inside cells */
 }
 
-/* 5. Attachment Button Styling */
+/* --- 3. Unified Input Actions & Attachment Button Layout --- */
+.ai-input-container {
+    display: flex !important;
+    align-items: flex-end !important;
+    gap: 10px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 14px !important;
+}
+
+.ai-input-container textarea {
+    flex: 1 !important;
+    font-size: 16px !important;    /* Essential parameter to completely block iOS/Safari auto-zoom */
+}
+
+/* Attachment Trigger Style Button Setup */
 .attachment-btn {
-    width: 50px;
-    height: 50px;
-    min-width: 50px;
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -6511,6 +6208,7 @@ body.dark .attachment-btn:hover {
     color: var(--text-light);
     cursor: pointer;
     transition: all 0.2s ease;
+    box-sizing: border-box;
 }
 
 .attachment-btn:hover {
@@ -6523,23 +6221,16 @@ body.dark .attachment-btn:hover {
     font-size: 22px;
 }
 
-/* 6. Strict Mobile View Overrides */
 @media (max-width: 768px) {
-    .portal-container {
-        overflow-x: hidden !important;
-    }
-    
-    .main-content {
-        margin-left: 0 !important;
+    .ai-layout {
+        grid-template-columns: 1fr !important; /* Forces vertical stacked mobile layout matrix */
         width: 100% !important;
-        max-width: 100vw !important;
-        padding: 12px !important;
     }
 
     .attachment-btn {
-        width: 46px;
-        height: 46px;
-        min-width: 46px;
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
         border-radius: 10px;
     }
     
@@ -6548,12 +6239,13 @@ body.dark .attachment-btn:hover {
     }
 }
 
-/* Dark mode safety variables mapping */
+/* Dark Mode Alignment Variables Rules Mapping */
 body.dark .attachment-btn {
     background: #242931;
     border-color: #3b4048;
     color: #b5b5b5;
 }
+
 body.dark .attachment-btn:hover {
     background: #2c323c;
     color: #4a90e2;
