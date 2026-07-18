@@ -2,6 +2,25 @@ window.CSCAI = (() => {
 
   Portal.setCurrentPage("ai");
 
+
+    let input;
+
+let attach;
+
+let voice;
+
+function updateInputButtons(){
+
+    if(!input) return;
+
+    const typing = input.value.trim().length > 0;
+
+    attach.classList.toggle("hide", typing);
+
+    voice.classList.toggle("hide", typing);
+
+}
+
         function init() {
 
     AIMarkdown.init();
@@ -12,13 +31,26 @@ window.CSCAI = (() => {
 
     AIRenderer.renderMessages();
 
+    
+
     bindEvents();
 
+input = document.getElementById("chat-input");
+
+attach = document.getElementById("attach-btn");
+
+voice = document.getElementById("voice-btn");
+
+
+input.addEventListener("input", updateInputButtons);
+
+// Initial state
+updateInputButtons();
     const uploadBtn =
 
 document.getElementById(
 
-    "upload-file-btn"
+    "attach-btn"
 
 );
 
@@ -106,11 +138,13 @@ fileInput.onchange = async () => {
         ChatManager.createConversation();
         AIRenderer.renderConversationList();
         AIRenderer.renderMessages();
+        updateInputButtons();
 
         const input = document.getElementById("chat-input");
         if (input) {
             input.value = "";
             input.focus();
+            updateInputButtons();
         }
     });
 
@@ -184,6 +218,8 @@ fileInput.onchange = async () => {
         AIRenderer.renderMessages();
 
         input.value = "";
+
+        updateInputButtons();
 
         AIRenderer.renderTyping();
 
