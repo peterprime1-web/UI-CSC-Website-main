@@ -1,7 +1,7 @@
 window.CSCAI = (() => {
 
   Portal.setCurrentPage("ai");
-
+    let isUploading = false;
 
     let input;
 
@@ -35,11 +35,132 @@ function updateInputButtons(){
 
     bindEvents();
 
+    
+
 input = document.getElementById("chat-input");
 
 attach = document.getElementById("attach-btn");
 
 voice = document.getElementById("voice-btn");
+
+const SpeechRecognition =
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition;
+
+if (SpeechRecognition) {
+
+    const recognition = new SpeechRecognition();
+
+    recognition.lang = "en-US";
+
+    recognition.continuous = false;
+
+    recognition.interimResults = true;
+
+    let listening = false;
+
+    voice.onclick = () => {
+
+        if (!listening) {
+
+            recognition.start();
+
+        } else {
+
+            recognition.stop();
+
+        }
+
+    };
+
+    recognition.onstart = () => {
+
+        listening = true;
+
+        voice.classList.add("recording");
+
+        voice.innerHTML = `
+        <span class="material-icons">
+            stop
+        </span>
+
+        
+    `;
+        input.focus();
+    };
+
+    recognition.onend = () => {
+
+        listening = false;
+
+        voice.classList.remove("recording");
+
+        finalTranscript = "";
+
+        voice.innerHTML = `
+        <span class="material-icons">
+            mic
+        </span>
+    `;
+
+    };
+
+    let finalTranscript = "";
+
+recognition.onresult = (event) => {
+
+    let interimTranscript = "";
+
+    for (
+        let i = event.resultIndex;
+        i < event.results.length;
+        i++
+    ) {
+
+        if(event.results[i].isFinal){
+
+            finalTranscript += event.results[i][0].transcript + " ";
+
+        }
+
+        else{
+
+            interimTranscript += event.results[i][0].transcript;
+
+        }
+
+    }
+
+    input.value = finalTranscript + interimTranscript;
+
+    input.dispatchEvent(new Event("input"));
+
+};
+
+recognition.onerror = (event) => {
+
+    console.error(event.error);
+
+    listening = false;
+
+    finalTranscript = "";
+
+    voice.classList.remove("recording");
+
+    voice.innerHTML = `
+        <span class="material-icons">
+            mic
+        </span>
+    `;
+
+};
+
+}
+if (!SpeechRecognition) {
+
+    voice.style.display = "none";
+
+}
 
 
 input.addEventListener("input", updateInputButtons);
@@ -78,11 +199,51 @@ fileInput.onchange = async () => {
 
         fileInput.files[0];
 
+    setUploadState(true);
+
     try{
 
-        const result =
+    // ==========================================
+    // Show Uploading...
+    // ==========================================
 
-            await Upload.upload(file);
+    const uploadingId = Date.now().toString();
+
+    ChatManager.addMessage(
+
+        "assistant",
+
+        `📤 Uploading **${file.name}**...`,
+
+        {
+
+            id: uploadingId
+
+        }
+
+    );
+
+    AIRenderer.renderMessages();
+
+    const result =
+
+        await Upload.upload(file);
+
+        // Remove Uploading... message
+
+const conversation =
+
+    ChatManager.getCurrentConversation();
+
+conversation.messages =
+
+    conversation.messages.filter(
+
+        msg => msg.id !== uploadingId
+
+    );
+
+AIRenderer.renderMessages();
 
         ChatManager.addMessage(
 
@@ -99,21 +260,42 @@ fileInput.onchange = async () => {
     catch(err){
 
         console.error(err);
+        const conversation =
+
+    ChatManager.getCurrentConversation();
+
+conversation.messages =
+
+    conversation.messages.filter(
+
+        msg => msg.id !== uploadingId
+
+    );
         ChatManager.addMessage(
 
-            "assistant",
+    "assistant",
 
-            `❌ ${err.message}`
-        );
+    `❌ Failed to upload **${file.name}**.\n\n${err.message}`
+
+);
 
         AIRenderer.renderMessages();
 
+        setUploadState(false);
+
+document.getElementById("chat-input")?.focus();
+
     }
 
-    fileInput.value = "";
+    setUploadState(false);
 
+document.getElementById("chat-input")?.focus();
+
+    fileInput.value = "";
+    
 };
 
+input.focus();
 input.addEventListener("input", () => {
 
     input.style.height = "24px";
@@ -121,6 +303,33 @@ input.addEventListener("input", () => {
     input.style.height = input.scrollHeight + "px";
 
 });
+
+}
+
+
+function setUploadState(uploading){
+
+    isUploading = uploading;
+
+    const sendBtn = document.getElementById("send-btn");
+
+    const attachBtn = document.getElementById("attach-btn");
+
+    const voiceBtn = document.getElementById("voice-btn");
+
+    const input = document.getElementById("chat-input");
+
+    if(sendBtn)
+        sendBtn.disabled = uploading;
+
+    if(attachBtn)
+        attachBtn.disabled = uploading;
+
+    if(voiceBtn)
+        voiceBtn.disabled = uploading;
+
+    if(input)
+        input.disabled = uploading;
 
 }
 
@@ -210,6 +419,21 @@ input.addEventListener("input", () => {
             document.getElementById("chat-input");
 
         if(!input) return;
+        if(isUploading){
+
+    ChatManager.addMessage(
+
+        "assistant",
+
+        "⏳ Please wait for the current upload to finish."
+
+    );
+
+    AIRenderer.renderMessages();
+
+    return;
+
+}
 
         const message = input.value.trim();
        

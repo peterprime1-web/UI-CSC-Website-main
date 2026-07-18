@@ -9,6 +9,9 @@ import {
 
 } from "./supabaseDatabase.js";
 
+import { extractImageText } from "./imageOCR.js";
+import { ocrPdf } from "./pdfOCR.js";
+
 
 
 /*
@@ -146,7 +149,22 @@ export async function uploadHandler(req, res){
     }
 
     extractedText = pages.join("\n\n");
+    
+    const strippedLength = extractedText
+    .replace(/\s/g, "")
+    .length;
 
+const needsOCR =
+    req.file.mimetype === "application/pdf" &&
+    strippedLength < 300;
+
+if (needsOCR) {
+
+    console.log("Running Gemini PDF OCR...");
+
+    extractedText = await ocrPdf(req.file.buffer);
+
+}
     break;
 
 }
@@ -175,6 +193,29 @@ export async function uploadHandler(req, res){
 
                 break;
 
+                case "image/png":
+
+    case "image/jpeg":
+
+    case "image/jpg":
+
+        console.log("Running Gemini Vision OCR...");
+
+        extractedText = await extractImageText(
+
+            req.file.buffer,
+
+            req.file.mimetype
+
+        );
+        console.log("================================");
+console.log("OCR RESULT");
+console.log("================================");
+console.log(extractedText.substring(0,500));
+console.log("================================");
+
+        break;
+
             default:
 
                 extractedText = "";
@@ -193,11 +234,7 @@ export async function uploadHandler(req, res){
 
             .push().key;
 
-        
-
-            
-
-            await db
+        await db
 .ref(`portal/materials/${id}`)
 .set({
 
@@ -213,10 +250,29 @@ export async function uploadHandler(req, res){
 
     size:req.file.size,
 
-    uploadedAt:Date.now()
+    uploadedAt:Date.now(),
 
+    ocrPending: false,
+
+extracted: extractedText.trim().length > 0
 });
 
+            
+
+            
+if (extractedText.trim().length > 0) {
+
+    console.log("Saving extracted text...");
+
+    await saveDocumentText(
+
+        id,
+
+        extractedText
+
+    );
+
+}
 if(conversationId){
 
     await db
@@ -231,20 +287,7 @@ if(conversationId){
 
 }
 
-/*
-=========================================
-SAVE EXTRACTED TEXT
-=========================================
-*/
-
-await saveDocumentText(
-
-    id,
-
-    extractedText
-
-);
-        /*
+   /*
         =========================================
         RESPONSE
         =========================================

@@ -14,6 +14,7 @@ CHAT ROUTE HANDLER
 
 export async function chatHandler(req, res) {
 
+
     try {
 
         const {
@@ -84,12 +85,9 @@ if (intent.type === "portal" && intent.topic) {
         }
 
         const documentContext =
-
-    await getConversationDocuments(
-
-        conversationId
-
-    );
+    (
+        await getConversationDocuments(conversationId)
+    ).slice(0,6000);
 
     console.log(documentContext.substring(0, 500));
         /*
@@ -121,6 +119,7 @@ ${documentContext}
         let usedModel = model;
 
         try {
+            
 
             if (model === "groq") {
 
@@ -165,7 +164,13 @@ ${documentContext}
                 err
 
             );
+            const MAX_CONTEXT = 10000;
 
+const groqPrompt =
+    fullPrompt.length > MAX_CONTEXT
+        ? fullPrompt.slice(-MAX_CONTEXT)
+        : fullPrompt;
+            const recentHistory = history.slice(-10);
             if (model === "groq") {
 
                 reply = await askGemini(
@@ -184,9 +189,9 @@ ${documentContext}
 
                 reply = await askGroq(
 
-                    fullPrompt,
+                    groqPrompt,
 
-                    history
+                    recentHistory
 
                 );
 
