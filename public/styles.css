@@ -6109,3 +6109,129 @@ body.dark .password-toggle:hover{
         font-size: 1.5rem !important;
     }
 }
+
+/* =========================================================
+   AI CHAT INPUT PANEL EXPANSION
+========================================================= */
+
+/* The main container surrounding the input box and send button */
+.ai-input-container {
+    padding: 16px !important;
+    background: #ffffff;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: flex-end; /* Keeps buttons aligned nicely as the input expands */
+    gap: 12px;
+    width: 100% !important;
+    box-sizing: border-box;
+}
+
+/* Make the textarea/input fields noticeably larger and easier to read */
+.ai-input-container textarea,
+.ai-input-container input[type="text"] {
+    flex: 1;
+    min-height: 50px;       /* Gives it a reliable default height */
+    max-height: 150px;      /* Prevents it from taking up the entire screen when typing a lot */
+    padding: 14px 16px !important;
+    font-size: 16px !important; /* Blocks automatic mobile zooming */
+    line-height: 1.5;
+    border: 1px solid var(--border);
+    border-radius: 12px !important; /* Smooth modern rounded look */
+    resize: vertical;       /* Allows manual resizing on desktop if needed */
+    background: var(--background);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Subtle focus effect to make it feel premium */
+.ai-input-container textarea:focus,
+.ai-input-container input[type="text"]:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15);
+    background: #fff;
+}
+
+/* Style adjustment for the action button next to the larger input box */
+.ai-input-container .send-btn, 
+.ai-input-container button {
+    height: 50px !important; /* Matches the input min-height perfectly */
+    width: 50px !important;  /* Makes it a clean circle/square action icon button */
+    min-width: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px !important;
+    padding: 0 !important;
+}
+
+/* Mobile-specific adjustments to save vertical space */
+@media (max-width: 768px) {
+    .ai-input-container {
+        padding: 12px !important; /* Compact container padding on small screens */
+        gap: 8px;
+    }
+    
+    .ai-input-container textarea,
+    .ai-input-container input[type="text"] {
+        min-height: 46px; /* Slightly shorter default size for smaller displays */
+        padding: 10px 14px !important;
+    }
+
+    .ai-input-container .send-btn, 
+    .ai-input-container button {
+        height: 46px !important;
+        width: 46px !important;
+        min-width: 46px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE RESPONSIVE CHAT TABLES FIX
+========================================================= */
+
+/* 1. Ensure the parent message bubble handles container clipping cleanly */
+.chat-message, 
+.message-content,
+.ai-main .chat-body {
+    max-width: 100% !important;
+    word-break: break-word; /* Allow long words to break if necessary */
+    overflow-wrap: break-word;
+}
+
+/* 2. Container setup to handle responsive horizontal tables */
+.message-content table {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important; /* Adds smooth finger scrolling for wide tables */
+    -webkit-overflow-scrolling: touch; /* Butter-smooth momentum scrolling on iOS */
+    border-collapse: collapse;
+    margin: 12px 0 !important;
+    box-sizing: border-box;
+}
+
+/* 3. Style text behaviors inside cells to force text wrapping */
+.message-content th,
+.message-content td {
+    min-width: 80px; /* Prevents cells from becoming completely squished */
+    white-space: normal !important; /* Overrides 'nowrap' behaviors */
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+    padding: 8px 10px !important;
+    font-size: 0.9rem !important; /* Slightly more compact font sizing for mobile screens */
+}
+
+/* Optional Custom Scrollbar formatting for the table overflow container */
+.message-content table::-webkit-scrollbar {
+    height: 4px; /* Thin horizontal scrollbar marker line */
+}
+
+.message-content table::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+}
+
+body.dark .message-content table::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.15);
+}
