@@ -69,7 +69,7 @@ window.CSCAI = (() => {
         const selectedPrompt = AIPrompts.get(promptType, student);
 
         // Debug log to verify it's working instantly
-        console.log(`Loaded prompt type: ${promptType}`, selectedPrompt);
+    
 
         // Optional: Pre-populate the input field with a helpful starter phrase
         const input = document.getElementById("chat-input");
@@ -136,7 +136,7 @@ window.CSCAI = (() => {
                     systemPrompt
 
                     );
-
+                    const isFirstConversation = history.length === 1;
 
             const badge = document.getElementById("ai-provider");
 
@@ -161,34 +161,32 @@ if (badge) {
 
             );
 
-            if(response.action){
+            
 
-    Portal.execute(response.action);
+            
 
-} 
+            if (isFirstConversation && response.reply) {
 
-            const chat = ChatManager.getCurrentConversation();
+    try {
 
+        const title = await AIAPI.generateTitle(message);
 
-    if (
-    history.length === 1
-) {
+        ChatManager.renameConversation(
+            ChatManager.getCurrentConversation().id,
+            title
+        );
 
-    const title =
-        await AIAPI.generateTitle(message);
+        AIRenderer.renderConversationList();
 
-    ChatManager.renameConversation(
+    } catch (err) {
 
-        ChatManager.getCurrentConversation().id,
+        console.error(err);
 
-        title
-
-    );
-
-    AIRenderer.renderConversationList();
+    }
 
 }
 
+   
             AIRenderer.renderMessages();
 
         }

@@ -91,6 +91,8 @@ GENERATE TITLE
 
 app.post("/generate-title", async (req, res) => {
 
+  console.log("Generating title...");
+
     try {
 
         const {

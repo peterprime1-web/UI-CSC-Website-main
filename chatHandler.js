@@ -1,5 +1,4 @@
-
-import { getPortalData } from "./firebaseHelpers.js";
+import { getPortalData, getPortalSection } from "./firebaseHelpers.js";
 import { buildPortalContext } from "./portalContext.js";
 
 import { askGemini } from "./gemini.js";
@@ -46,20 +45,17 @@ export async function chatHandler(req, res) {
 
         const intent = await classifyIntent(message);
 
-        /*
-        =========================================
-        LOAD PORTAL DATA
-        =========================================
-        */
+let portalContext = "";
 
-       const section = await getPortalSection(intent.topic);
+if (intent.type === "portal" && intent.topic) {
 
-portalContext = buildPortalContext({
+    const section = await getPortalSection(intent.topic);
 
-    [intent.topic]: section
+    portalContext = buildPortalContext({
+        [intent.topic]: section
+    });
 
-});
-
+}
         /*
         =========================================
         NAVIGATION REQUEST
@@ -88,15 +84,15 @@ portalContext = buildPortalContext({
         =========================================
         */
 
-        const fullPrompt =
-
-`${context}
+        const fullPrompt = `
+${context}
 
 ${portalContext}
 
 Student:
 
-${message}`;
+${message}
+`;
 
         /*
         =========================================

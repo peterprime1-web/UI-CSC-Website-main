@@ -458,6 +458,52 @@ a{
 
 }
 
+@media (max-width: 768px) {
+    /* 1. Prevent the page layout from overflowing or shifting horizontally */
+    html, body {
+        width: 100%;
+        overflow-x: hidden;
+        font-size: 14px; /* Slightly lowers global base text size scale for smaller screens */
+    }
+
+    .portal-container, .ai-layout {
+        max-width: 100vw !important;
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    /* 2. FORBID AUTOMATIC MOBILE INPUT ZOOM
+       Browsers force-zoom if input text font-size is below 16px */
+    .ai-input-container textarea,
+    .ai-input-container input,
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    textarea {
+        font-size: 16px !important; /* Overrides smaller sizes to eliminate input-focus zoom */
+    }
+
+    /* 3. RESPONSIVE CHAT & TEXT SIZING 
+       Adjust text elements dynamically so they look proportional on small displays */
+    .ai-header h1 {
+        font-size: 1.5rem !important; /* Scaled header */
+    }
+
+    .ai-header p {
+        font-size: 0.85rem !important;
+    }
+
+    .chat-message p {
+        font-size: 0.95rem !important;
+        line-height: 1.4;
+    }
+
+    /* Force layouts to strictly respect width bounds */
+    * {
+        box-sizing: border-box;
+    }
+}
+
 /* =========================================================
    PROFILE
 ========================================================= */
