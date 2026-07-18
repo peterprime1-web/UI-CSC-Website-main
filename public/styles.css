@@ -6023,3 +6023,89 @@ body.dark .password-toggle:hover{
         display: none !important;
     }
 }
+
+/* =========================================================
+   MOBILE RESPONSIVENESS SCREEN BOUNDS FIXES
+========================================================= */
+@media (max-width: 768px) {
+    /* Ensure the document body fills the view exactly without horizontal clipping */
+    html, body {
+        width: 100% !important;
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Override fixed margins intended for the desktop sidebar layout */
+    .main-content {
+        margin-left: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 16px !important; /* Reduces padding to save horizontal real estate */
+    }
+
+    /* Correct grid containers that overflow on narrower mobile screens */
+    .dashboard-grid, 
+    .content-grid, 
+    .materials-grid, 
+    .ai-suggestions {
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+        gap: 16px !important;
+    }
+
+    /* Stop page headers and toolbar inputs from blowing past bounds */
+    .page-header, .materials-toolbar {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        width: 100% !important;
+    }
+
+    .page-header input, 
+    .materials-toolbar input, 
+    .materials-toolbar select {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Make large cards fluid to prevent clipping */
+    .welcome-card, 
+    .announcement-card, 
+    .dashboard-card, 
+    .course-card, 
+    .note-card, 
+    .material-card, 
+    .assignment-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 20px !important; /* Keep internal padding compact */
+    }
+
+    /* Force the main AI wrapper to stay bound within screen limits */
+    .ai-layout {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: calc(100vh - 80px) !important;
+    }
+
+    .ai-main {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: 1 !important;
+    }
+}
+
+/* Additional layout security for extra-small devices */
+@media (max-width: 480px) {
+    .main-content {
+        padding: 12px !important;
+    }
+
+    .welcome-card h1 {
+        font-size: 1.5rem !important;
+    }
+}
