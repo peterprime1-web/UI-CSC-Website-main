@@ -30,6 +30,26 @@ window.AIMarkdown = (() => {
 
     let html = parser.parse(text);
 
+    // ==========================================
+    // Make tables responsive
+    // ==========================================
+
+    html = html.replace(
+
+        /<table>/g,
+
+        '<div class="table-wrapper"><table>'
+
+    );
+
+    html = html.replace(
+
+        /<\/table>/g,
+
+        '</table></div>'
+
+    );
+
     if(window.DOMPurify){
 
         html = DOMPurify.sanitize(html);

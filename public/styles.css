@@ -2959,15 +2959,49 @@ body.dark .message.assistant .message-bubble{
    TABLES
 ========================================================= */
 
-.message-bubble table{
+/* ==========================================
+   Responsive Tables
+========================================== */
+
+.message-bubble .table-wrapper{
 
     width:100%;
 
-    border-collapse:collapse;
+    overflow-x:auto;
 
-    margin:24px 0;
+    overflow-y:hidden;
+
+    margin:20px 0;
+
+    -webkit-overflow-scrolling:touch;
 
 }
+
+.message-bubble .table-wrapper::-webkit-scrollbar{
+
+    height:6px;
+
+}
+
+.message-bubble .table-wrapper::-webkit-scrollbar-thumb{
+
+    background:#999;
+
+    border-radius:20px;
+
+}
+
+.message-bubble table{
+
+    width:max-content;
+
+    min-width:100%;
+
+    border-collapse:collapse;
+
+}
+
+
 
 .message-bubble th{
 
