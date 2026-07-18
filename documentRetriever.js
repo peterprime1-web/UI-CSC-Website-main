@@ -33,6 +33,10 @@ export async function getConversationDocuments(conversationId){
 
     );
 
+    console.log("Retrieving documents for:", conversationId);
+
+    console.log(documentIds);
+
     let context = "";
 
     for(const id of documentIds){
@@ -40,6 +44,8 @@ export async function getConversationDocuments(conversationId){
         try{
 
             const text = await getDocumentText(id);
+
+            console.log("Loaded", id, text.length);
 
             context +=
 

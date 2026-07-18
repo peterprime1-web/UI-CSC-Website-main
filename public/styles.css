@@ -6278,3 +6278,59 @@ body.dark .message-content table::-webkit-scrollbar-thumb {
     white-space: normal !important; /* Allow normal wrapping inside cells */
     word-break: break-word !important;
 }
+
+/* =========================================================
+   STRICT CHAT VIEWPORT LOCKDOWN (TABLE FIX)
+========================================================= */
+
+/* Force the outer AI workspace to strictly lock to the device width */
+.ai-layout {
+    display: flex !important;
+    width: 100% !important;
+    max-width: 100vw !important; /* Prevents stretching past visible screen width */
+    height: calc(100vh - 70px) !important; /* Adjust based on topbar height if needed */
+    position: relative !important;
+    overflow: hidden !important; /* Locks structural bounds tightly */
+}
+
+/* Force the main chat display area to fill but never exceed its viewport block */
+.ai-main {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    min-width: 0 !important; /* CRITICAL: Allows flex items to shrink below text width */
+    max-width: 100% !important;
+    overflow: hidden !important;
+}
+
+/* Ensure the scrollable chat body respects the strict parental boundaries */
+.chat-body,
+.chat-container {
+    flex: 1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    overflow-y: auto !important; /* Normal vertical message scroll */
+    overflow-x: hidden !important; /* BLOCKS horizontal message container shifting */
+}
+
+/* Lock the message bubble down completely */
+.chat-message,
+.message-bubble {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* Force the table container inside the text wrapper to catch all extra space */
+.message-content table {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important; /* Native gesture scrolling active inside bubble boundary */
+    -webkit-overflow-scrolling: touch;
+    border-collapse: collapse;
+    margin: 12px 0 !important;
+}

@@ -30,6 +30,8 @@ export async function chatHandler(req, res) {
 
         } = req.body;
 
+        console.log("Conversation ID:", conversationId);
+
         if (!message?.trim()) {
 
             return res.status(400).json({
@@ -88,6 +90,8 @@ if (intent.type === "portal" && intent.topic) {
         conversationId
 
     );
+
+    console.log(documentContext.substring(0, 500));
         /*
         =========================================
         BUILD FINAL PROMPT
