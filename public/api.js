@@ -25,17 +25,22 @@ localStorage.getItem("aiModel")
 
                 body: JSON.stringify({
 
-                    message,
+    message,
 
-                    context: systemPrompt,
+    context: systemPrompt,
 
-                    portalContext: Portal.getCurrentContext(),
+    portalContext: Portal.getCurrentContext(),
 
-                    model: currentModel,
+    model: currentModel,
 
-                    history
+    history,
 
-                }),
+    conversationId:
+        ChatManager
+            .getCurrentConversation()
+            .id
+
+}),
 
                 signal: controller.signal
 
@@ -83,26 +88,24 @@ localStorage.getItem("aiModel")
 
                 },
 
-                body:JSON.stringify({
+                body: JSON.stringify({
 
-                    message,
+    message,
 
-                    context: systemPrompt,
+    context: systemPrompt,
 
-                    model:currentModel,
+    portalContext: Portal.getCurrentContext(),
 
-                    history,
+    model: currentModel,
 
-                    conversationId:
+    history,
 
+    conversationId:
         ChatManager
-
             .getCurrentConversation()
-
             .id
 
-                })
-
+})
             });
 
             if(!retry.ok){
