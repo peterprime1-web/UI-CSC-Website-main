@@ -4,6 +4,7 @@ import { buildPortalContext } from "./portalContext.js";
 import { askGemini } from "./gemini.js";
 import { askGroq } from "./groq.js";
 import { classifyIntent } from "./intentClassifier.js";
+import { getConversationDocuments } from "./documentRetriever.js";
 
 /*
 =========================================
@@ -23,7 +24,9 @@ export async function chatHandler(req, res) {
 
             model = "gemini",
 
-            context = ""
+            context = "",
+
+            conversationId
 
         } = req.body;
 
@@ -78,6 +81,13 @@ if (intent.type === "portal" && intent.topic) {
 
         }
 
+        const documentContext =
+
+    await getConversationDocuments(
+
+        conversationId
+
+    );
         /*
         =========================================
         BUILD FINAL PROMPT
@@ -92,6 +102,8 @@ ${portalContext}
 Student:
 
 ${message}
+
+${documentContext}
 `;
 
         /*

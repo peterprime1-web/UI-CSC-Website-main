@@ -14,6 +14,74 @@ window.CSCAI = (() => {
 
     bindEvents();
 
+    const uploadBtn =
+
+document.getElementById(
+
+    "upload-file-btn"
+
+);
+
+const fileInput =
+
+document.getElementById(
+
+    "ai-file-input"
+
+);
+
+uploadBtn.onclick = () => {
+
+    fileInput.click();
+
+};
+
+fileInput.onchange = async () => {
+
+    if(!fileInput.files.length)
+
+        return;
+
+    const file =
+
+        fileInput.files[0];
+
+    try{
+
+        const result =
+
+            await Upload.upload(file);
+
+        ChatManager.addMessage(
+
+            "assistant",
+
+            `📄 Uploaded **${file.name}** successfully.`
+
+        );
+
+        AIRenderer.renderMessages();
+
+    }
+
+    catch(err){
+
+        console.error(err);
+        ChatManager.addMessage(
+
+            "assistant",
+
+            `❌ ${err.message}`
+        );
+
+        AIRenderer.renderMessages();
+
+    }
+
+    fileInput.value = "";
+
+};
+
 }
 
 

@@ -91,7 +91,15 @@ localStorage.getItem("aiModel")
 
                     model:currentModel,
 
-                    history
+                    history,
+
+                    conversationId:
+
+        ChatManager
+
+            .getCurrentConversation()
+
+            .id
 
                 })
 

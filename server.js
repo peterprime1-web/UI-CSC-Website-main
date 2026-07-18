@@ -7,6 +7,7 @@ import { fileURLToPath } from "url";
 import { chatHandler } from "./chatHandler.js";
 import { generateTitle } from "./titleGenerator.js";
 import { auth } from "./firebase-admin.js";
+import uploadRoutes from "./uploadRoutes.js";
 
 /*
 =========================================
@@ -249,7 +250,24 @@ app.post("/bootstrap-admin", async (req, res) => {
 
 });
 
+
+
 /*
+=========================================
+UPLOADS
+=========================================
+*/
+
+app.use(
+
+    "/upload",
+
+    uploadRoutes
+
+);
+/*
+
+
 =========================================
 START SERVER
 =========================================

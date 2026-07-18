@@ -6235,3 +6235,46 @@ body.dark .password-toggle:hover{
 body.dark .message-content table::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.15);
 }
+
+/* =========================================================
+   BULLETPROOF FLEXBOX & TABLE CONTAINMENT FIX
+========================================================= */
+
+/* 1. Force the layout containers and bubbles to allow shrinking */
+.ai-main,
+.chat-body,
+.chat-container,
+.chat-message,
+.message-content,
+.message-bubble {
+    min-width: 0 !important; /* CRITICAL: Breaks flexbox rigid width calculation */
+    max-width: 100% !important;
+}
+
+/* 2. Lock down the markdown/text wrapper inside the chat bubble */
+.message-content {
+    width: 100% !important;
+    overflow-x: hidden; /* Prevent text overflow */
+}
+
+/* 3. Strict structural table confinement rules */
+.message-content table {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important; /* Force a native mobile swipe scrollbar */
+    white-space: nowrap; /* Keep table cells structural while scrolling */
+    border-collapse: collapse;
+    margin: 12px 0 !important;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* 4. Let table cells drop to smaller sizes and wrap if needed */
+.message-content th,
+.message-content td {
+    padding: 6px 10px !important;
+    font-size: 0.85rem !important;
+    border: 1px solid var(--border);
+    white-space: normal !important; /* Allow normal wrapping inside cells */
+    word-break: break-word !important;
+}
