@@ -6251,3 +6251,39 @@ body.dark .attachment-btn:hover {
     color: #4a90e2;
     border-color: #4a90e2;
 }
+
+@media (max-width: 768px) {
+
+    #ai {
+
+        width: 100% !important;
+
+        max-width: 100% !important;
+
+        margin: 0 !important;
+
+        padding: 0 !important;
+
+        left: 0 !important;
+
+        right: 0 !important;
+
+    }
+
+}
+
+@media (max-width:768px){
+    .ai-main
+    .chat-messages{
+
+        width:100%;
+
+        max-width:100%;
+
+        margin:0;
+
+        border-radius:0;
+
+    }
+
+}
