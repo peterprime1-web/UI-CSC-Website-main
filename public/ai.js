@@ -114,6 +114,14 @@ fileInput.onchange = async () => {
 
 };
 
+input.addEventListener("input", () => {
+
+    input.style.height = "24px";
+
+    input.style.height = input.scrollHeight + "px";
+
+});
+
 }
 
 
