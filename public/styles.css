@@ -6334,3 +6334,113 @@ body.dark .message-content table::-webkit-scrollbar-thumb {
     border-collapse: collapse;
     margin: 12px 0 !important;
 }
+
+/* =========================================================
+   BULLETPROOF TABLE & CONTAINER CONTAINMENT OVERRIDES
+========================================================= */
+
+/* 1. Lock down the structural layout of the AI page container */
+.ai-layout {
+    display: grid !important;
+    grid-template-columns: 320px 1fr !important;
+    gap: 24px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important; /* Forces layout tracking engines to permit shrinking */
+}
+
+/* 2. Absolute constraint rules applied down the entire DOM tree */
+.ai-main,
+.chat-body,
+.chat-container,
+.chat-message,
+.message-bubble,
+.message-content {
+    min-width: 0 !important;   /* CRITICAL: Stops components from expanding to text width */
+    max-width: 100% !important;  /* Locks structural container bounding limits */
+}
+
+/* 3. Tame the structural behavior of the chat message wrapper */
+.message-content {
+    width: 100% !important;
+    overflow: hidden !important; /* Stops content from creating secondary page spaces */
+}
+
+/* 4. Complete table confinement architecture */
+.message-content table {
+    display: block !important;    /* Changes table format so max-width is respected */
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;   /* Forces structural desktop/mobile swipe-scrolling */
+    white-space: nowrap !important;/* Maintains standard table rows inside the scroll container */
+    border-collapse: collapse;
+    margin: 14px 0 !important;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Ensure mobile media query overrides enforce this */
+@media (max-width: 768px) {
+    .ai-layout {
+        grid-template-columns: 1fr !important; /* Stack elements on mobile views */
+        width: 100% !important;
+        max-width: 100vw !important;
+    }
+}
+
+/* =========================================================
+   CSC AI ATTACHMENT BUTTON INTERFACE
+========================================================= */
+
+.attachment-btn {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* Hover & Focus state feedback animations */
+.attachment-btn:hover {
+    background: #eef5ff;
+    color: var(--primary);
+    border-color: rgba(74, 144, 226, 0.4);
+    transform: translateY(-1px);
+}
+
+.attachment-btn:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* Adjust sizes for mobile viewports */
+@media (max-width: 768px) {
+    .attachment-btn {
+        width: 46px;
+        height: 46px;
+        min-width: 46px;
+        border-radius: 10px;
+    }
+    
+    .attachment-btn .material-icons {
+        font-size: 20px;
+    }
+}
+
+/* Dark mode compatibility system rules */
+body.dark .attachment-btn {
+    background: #242931;
+    border-color: #3b4048;
+    color: #b5b5b5;
+}
+
+body.dark .attachment-btn:hover {
+    background: #2c323c;
+    color: #4a90e2;
+    border-color: #4a90e2;
+}
