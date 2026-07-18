@@ -141,7 +141,7 @@ window.Announcements = (() => {
     title.textContent =
         announcement.title;
 
-    preview.textContent = truncateWords(announcement.message, 25);
+    preview.textContent = truncateWords(announcement.message, 15);
 
     button.onclick = () => {
 
