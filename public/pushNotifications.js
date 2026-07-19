@@ -77,7 +77,7 @@ window.PushNotificationsManager = (() => {
         }
 
         // Register device with backend
-        const result = await PushManager.register(
+        const result = await PushManage.register(
 
             student.uid,
 

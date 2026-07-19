@@ -187,7 +187,7 @@ if (token) {
 
     try {
 
-        await PushManager.register(
+        await PushManage.register(
 
             student.uid,
 

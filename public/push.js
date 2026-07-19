@@ -1,4 +1,4 @@
-window.PushManager = {
+window.PushManage = {
 
     async register(uid, token) {
 
