@@ -15,9 +15,9 @@ function updateInputButtons(){
 
     const typing = input.value.trim().length > 0;
 
-    attach.classList.toggle("hide", typing);
+    attach?.classList.toggle("hide", typing);
 
-    voice.classList.toggle("hide", typing);
+    voice?.classList.toggle("hide", typing);
 
 }
 
@@ -487,16 +487,49 @@ if (badge) {
     Portal.execute(response.action);
 
 }
-            AIRenderer.removeTyping();
+            
+    AIRenderer.removeTyping();
 
-            ChatManager.addMessage(
+const conversation =
+    ChatManager.getCurrentConversation();
 
-                "assistant",
+const assistantMessage = {
 
-                response.reply
+    role: "assistant",
 
-            );
+    content: "",
 
+    timestamp: Date.now()
+
+};
+
+conversation.messages.push(assistantMessage);
+
+AIRenderer.createStreamingMessage();
+
+AIRenderer.streamMessage(
+
+    response.reply,
+
+    (partial, done)=>{
+
+        assistantMessage.content = partial;
+
+        if(done){
+
+            AIRenderer.finishStreamingMessage(partial);
+
+        }
+
+        else{
+
+            AIRenderer.updateStreamingMessage(partial);
+
+        }
+
+    }
+
+);
             
 
             
@@ -523,7 +556,7 @@ if (badge) {
 }
 
    
-            AIRenderer.renderMessages();
+            
 
         }
 

@@ -1,5 +1,8 @@
 window.AIRenderer = (() => {
 
+    let streamingBubble = null;
+let streamingContent = null;
+
     function renderConversationList() {
         const container = document.getElementById("chat-list");
         if (!container) return;
@@ -183,11 +186,101 @@ window.AIRenderer = (() => {
         document.querySelector(".typing")?.remove();
     }
 
+
+        function streamMessage(text, callback) {
+
+    let current = "";
+
+    let index = 0;
+
+    const speed = 4; // milliseconds
+
+    function type() {
+
+        if (index >= text.length) {
+
+            callback(current, true);
+
+            return;
+
+        }
+
+        current += text[index++];
+
+        callback(current, false);
+
+        requestAnimationFrame(() => {
+
+            setTimeout(type, speed);
+
+        });
+
+    }
+
+    type();
+
+}
+
+    function createStreamingMessage() {
+
+    const container = document.getElementById("chat-messages");
+
+    if (!container) return;
+
+    const wrapper = document.createElement("div");
+    wrapper.className = "message assistant";
+
+    const bubble = document.createElement("div");
+    bubble.className = "message-bubble streaming";
+
+    wrapper.appendChild(bubble);
+    container.appendChild(wrapper);
+
+    streamingBubble = wrapper;
+    streamingContent = bubble;
+
+    AIUtils.scrollBottom(container);
+
+}
+
+function updateStreamingMessage(text) {
+
+    if (!streamingContent) return;
+
+    streamingContent.textContent = text;
+
+    AIUtils.scrollBottom(
+        document.getElementById("chat-messages")
+    );
+
+}
+
+function finishStreamingMessage(markdown) {
+
+    if (!streamingContent) return;
+
+    streamingContent.classList.remove("streaming");
+
+    streamingContent.innerHTML =
+        AIMarkdown.render(markdown);
+
+    AIMarkdown.renderCodeBlocks(streamingContent);
+
+    streamingBubble = null;
+    streamingContent = null;
+
+}
+
+
     return {
         renderConversationList,
         renderMessages,
         renderTyping,
-        removeTyping
+        removeTyping,
+        streamMessage,  
+        createStreamingMessage,
+        updateStreamingMessage,
+        finishStreamingMessage
     };
 
 })(); // Correctly moved to the very bottom to encapsulate all functions safely

@@ -6784,3 +6784,23 @@ body.dark #send-btn{
     }
 
 }
+
+.message-bubble.streaming::after{
+
+    content:"▋";
+
+    animation:blinkCursor .8s infinite;
+
+    margin-left:2px;
+
+}
+
+@keyframes blinkCursor{
+
+    50%{
+
+        opacity:0;
+
+    }
+
+}

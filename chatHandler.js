@@ -31,7 +31,7 @@ export async function chatHandler(req, res) {
 
         } = req.body;
 
-        console.log("Conversation ID:", conversationId);
+        
 
         if (!message?.trim()) {
 
@@ -85,11 +85,13 @@ if (intent.type === "portal" && intent.topic) {
         }
 
         const documentContext =
-    (
-        await getConversationDocuments(conversationId)
-    ).slice(0,6000);
+(
+    await getConversationDocuments(conversationId) || ""
+).slice(0,6000);
 
-    console.log(documentContext.substring(0, 500));
+    console.log(
+    `Retrieved document context: ${documentContext.length} characters`
+);
         /*
         =========================================
         BUILD FINAL PROMPT
@@ -101,11 +103,13 @@ ${context}
 
 ${portalContext}
 
+${documentContext}
+
 Student:
 
 ${message}
 
-${documentContext}
+
 `;
 
         /*
@@ -164,20 +168,38 @@ ${documentContext}
                 err
 
             );
-            const MAX_CONTEXT = 10000;
+           const trimmedDocumentContext =
+    documentContext.length > 5000
+        ? documentContext.slice(0, 5000)
+        : documentContext;
 
-const groqPrompt =
-    fullPrompt.length > MAX_CONTEXT
-        ? fullPrompt.slice(-MAX_CONTEXT)
-        : fullPrompt;
-            const recentHistory = history.slice(-10);
+const trimmedPortalContext =
+    portalContext.length > 2000
+        ? portalContext.slice(0, 2000)
+        : portalContext;
+
+const groqPrompt = `
+${context}
+
+${trimmedPortalContext}
+
+${trimmedDocumentContext}
+
+Student:
+
+${message}
+`;
+            const recentHistory =
+    history.length > 8
+        ? history.slice(-8)
+        : history;
             if (model === "groq") {
 
                 reply = await askGemini(
 
-                    fullPrompt,
+                    groqPrompt,
 
-                    history
+                    recentHistory
 
                 );
 

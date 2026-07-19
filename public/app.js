@@ -21,28 +21,33 @@ window.StudentPortal = (() => {
             const student = await checkAuth();
             populateStudent(student);
             loadStudentProfile();
-            Dashboard.init();
-            Navigate.init();
-            Sidebar.init();
-            Notes.init();
-            initLogout();
-            Notifications.init();
             initSearch();
-            CSCAI.init();
-            Theme.init();
-            Announcements.init();
-            AnnouncementsPage.init();
-            Materials.init();
-            Assignments.init();
-            Syllabus.init();
-            Courses.init();
-            Profile.init();
-            Settings.init();
+            initLogout();
+
+        await Promise.all([
+            Dashboard.init?.(),
+            Navigate.init?.(),
+            Sidebar.init?.(),
+            Notes.init?.(),
+            
+            Notifications.init?.(),
+            
+            CSCAI.init?.(),
+            Theme.init?.(),
+            Announcements.init?.(),
+            AnnouncementsPage.init?.(),
+            Materials.init?.(),
+            Assignments.init?.(),
+            Syllabus.init?.(),
+            Courses.init?.(),
+            Profile.init?.(),
+            Settings.init?.()
+        ]);
             
             Navigate.showPage("dashboard");
-            console.log("Student Portal Ready");
+            console.info("Student Portal Initialized");
         } catch(err) {
-            console.error(err);
+            console.error("❌ Failed to initialize portal:", err);
         }
     }
 
