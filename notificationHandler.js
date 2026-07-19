@@ -8,6 +8,9 @@ REGISTER DEVICE TOKEN
 
 export async function registerDevice(req, res) {
 
+    console.log("REGISTER DEVICE CALLED");
+    console.log(req.body);
+
     try {
 
         const { uid, token } = req.body;
