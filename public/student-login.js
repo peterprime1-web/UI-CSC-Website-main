@@ -180,6 +180,9 @@ if(!student){
             
   const token = localStorage.getItem("fcmToken");
 
+  console.log("Stored token:", token);
+console.log("Student UID:", student.uid);
+
 if (token) {
 
     try {

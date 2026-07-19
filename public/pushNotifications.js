@@ -56,47 +56,29 @@ window.PushNotificationsManager = (() => {
 
     }
 
-    async function registerToken(token) {
+   async function registerToken(token) {
 
-    try {
+    console.log("Token received:", token);
 
-        // Save locally
-        localStorage.setItem("fcmToken", token);
+    localStorage.setItem("fcmToken", token);
 
-        // User not logged in yet?
-        const student = getCurrentStudent?.();
+    const student = getCurrentStudent?.();
 
-        if (!student || !student.uid) {
+    console.log("Current student:", student);
 
-            console.log(
-                "User not logged in yet. Token saved locally."
-            );
+    if (!student || !student.uid) {
 
-            return;
+        console.log("Student not logged in yet.");
 
-        }
-
-        // Register device with backend
-        const result = await PushManager.register(
-
-            student.uid,
-
-            token
-
-        );
-
-        console.log(
-            "Device registered:",
-            result
-        );
+        return;
 
     }
 
-    catch(err){
+    console.log("Sending token to backend...");
 
-        console.error(err);
+    const result = await PushManager.register(student.uid, token);
 
-    }
+    console.log("Backend response:", result);
 
 }
 
