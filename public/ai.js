@@ -1,5 +1,6 @@
+import { SpeechRecognition } from "@capacitor-community/speech-recognition";
 window.CSCAI = (() => {
-
+    
   Portal.setCurrentPage("ai");
     let isUploading = false;
 
@@ -43,127 +44,51 @@ attach = document.getElementById("attach-btn");
 
 voice = document.getElementById("voice-btn");
 
-const SpeechRecognition =
-    window.SpeechRecognition ||
-    window.webkitSpeechRecognition;
+voice.onclick = async () => {
 
-if (SpeechRecognition) {
+    try {
 
-    const recognition = new SpeechRecognition();
+        const permission =
+            await SpeechRecognition.requestPermissions();
 
-    recognition.lang = "en-US";
-
-    recognition.continuous = false;
-
-    recognition.interimResults = true;
-
-    let listening = false;
-
-    voice.onclick = () => {
-
-        if (!listening) {
-
-            recognition.start();
-
-        } else {
-
-            recognition.stop();
-
+        if (permission.speechRecognition !== "granted") {
+            alert("Microphone permission denied.");
+            return;
         }
 
-    };
+        voice.classList.add("listening");
 
-    recognition.onstart = () => {
-
-        listening = true;
-
-        voice.classList.add("recording");
-
-        voice.innerHTML = `
-        <span class="material-icons">
-            stop
-        </span>
-
-        
-    `;
-        input.focus();
-    };
-
-    recognition.onend = () => {
-
-        listening = false;
-
-        voice.classList.remove("recording");
-
-        finalTranscript = "";
-
-        voice.innerHTML = `
-        <span class="material-icons">
-            mic
-        </span>
-    `;
-
-    };
-
-    let finalTranscript = "";
-
-recognition.onresult = (event) => {
-
-    let interimTranscript = "";
-
-    for (
-        let i = event.resultIndex;
-        i < event.results.length;
-        i++
-    ) {
-
-        if(event.results[i].isFinal){
-
-            finalTranscript += event.results[i][0].transcript + " ";
-
-        }
-
-        else{
-
-            interimTranscript += event.results[i][0].transcript;
-
-        }
+        await SpeechRecognition.start({
+            language: "en-US",
+            popup: true,
+            partialResults: false
+        });
 
     }
 
-    input.value = finalTranscript + interimTranscript;
+    catch (err) {
 
-    input.dispatchEvent(new Event("input"));
+        console.error(err);
 
-};
+        voice.classList.remove("listening");
 
-recognition.onerror = (event) => {
-
-    console.error(event.error);
-
-    listening = false;
-
-    finalTranscript = "";
-
-    voice.classList.remove("recording");
-
-    voice.innerHTML = `
-        <span class="material-icons">
-            mic
-        </span>
-    `;
+    }
 
 };
-
-}
-if (!SpeechRecognition) {
-
-    voice.style.display = "none";
-
-}
-
 
 input.addEventListener("input", updateInputButtons);
+
+SpeechRecognition.addListener(
+    "result",
+    (data) => {
+        if (data.matches?.length) {
+            input.value = data.matches[0];
+            updateInputButtons();
+        }
+
+        voice.classList.remove("listening");
+    }
+);
 
 // Initial state
 updateInputButtons();
