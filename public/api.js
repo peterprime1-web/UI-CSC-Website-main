@@ -133,7 +133,7 @@ return {
         }
 
     }
-    clearTimeout(timeout);
+
 
     async function generateTitle(firstMessage){
 
