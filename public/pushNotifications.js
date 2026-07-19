@@ -56,39 +56,47 @@ window.PushNotificationsManager = (() => {
 
     }
 
-   export async function registerDevice(req, res) {
+    async function registerToken(token) {
 
-    console.log("========== REGISTER DEVICE ==========");
-    console.log("Body:", req.body);
+    try {
 
-    const { uid, token } = req.body;
+        // Save locally
+        localStorage.setItem("fcmToken", token);
 
-    console.log("UID:", uid);
-    console.log("TOKEN:", token?.substring(0, 25));
+        // User not logged in yet?
+        const student = getCurrentStudent?.();
 
-    const snapshot = await db.ref("students").once("value");
+        if (!student || !student.uid) {
 
-    let studentKey = null;
+            console.log(
+                "User not logged in yet. Token saved locally."
+            );
 
-    snapshot.forEach(child => {
-
-        console.log(
-            "Checking:",
-            child.key,
-            child.val().uid
-        );
-
-        if (child.val().uid === uid) {
-
-            console.log("MATCH FOUND!");
-
-            studentKey = child.key;
+            return;
 
         }
 
-    });
+        // Register device with backend
+        const result = await PushManager.register(
 
-    console.log("studentKey =", studentKey);
+            student.uid,
+
+            token
+
+        );
+
+        console.log(
+            "Device registered:",
+            result
+        );
+
+    }
+
+    catch(err){
+
+        console.error(err);
+
+    }
 
 }
 
