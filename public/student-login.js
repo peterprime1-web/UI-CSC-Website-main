@@ -178,7 +178,29 @@ if(!student){
             );
 
             
+  const token = localStorage.getItem("fcmToken");
 
+if (token) {
+
+    try {
+
+        await PushManager.register(
+
+            student.uid,
+
+            token
+
+        );
+
+    }
+
+    catch(err){
+
+        console.error(err);
+
+    }
+
+}
             setTimeout(()=>{
 
                 window.location.href = "index.html";
@@ -735,4 +757,7 @@ function setupAccountActivation(){
     });
 
 }
+
+
+
 

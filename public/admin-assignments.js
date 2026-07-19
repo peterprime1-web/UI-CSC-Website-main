@@ -485,7 +485,9 @@ window.AdminAssignments = (() => {
 
             const titleVal = $("assignment-title").value.trim();
 
-            await db.ref(DB_PATH).push().set({
+            const assignmentId = db.ref(DB_PATH).push();
+
+            await assignmentId.set({
 
                 title: titleVal,
 
@@ -509,12 +511,19 @@ window.AdminAssignments = (() => {
 
             });
 
+            
             // Log activity to Firebase
             await logActivity(`Uploaded assignment: ${titleVal} (${course.code})`, "assignment");
 
             closeModal();
 
             show("Assignment uploaded.");
+
+            await AdminNotifier.send(
+    "assignment",
+    title,
+    assignmentId.key
+);
 
         }
 

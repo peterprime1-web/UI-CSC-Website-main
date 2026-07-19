@@ -615,7 +615,9 @@ ${material ? material.description || "" : ""}
 
         const upload = await uploadFile(BUCKET,file);
 
-        await db.ref(DB_PATH).push().set({
+        const materialId = db.ref(DB_PATH).push();
+
+        await materialId.set({
 
             title:$("material-title").value.trim(),
 
@@ -639,11 +641,19 @@ ${material ? material.description || "" : ""}
 
         });
 
-        await logActivity(`Added learning material: ${materialTitle}`, "folder_open");
+
+          await logActivity(`Added learning material: ${materialTitle}`, "folder_open");
 
         closeModal();
 
         show("Material uploaded successfully.");
+
+        await AdminNotifier.send(
+    "material",
+    title,
+    materialId.key
+);
+      
 
     }
 

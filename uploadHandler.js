@@ -9,6 +9,7 @@ import {
 
 } from "./supabaseDatabase.js";
 
+
 import { extractImageText } from "./imageOCR.js";
 import { ocrPdf } from "./pdfOCR.js";
 

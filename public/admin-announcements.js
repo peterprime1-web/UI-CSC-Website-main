@@ -440,7 +440,8 @@ window.AdminAnnouncements = (()=>{
 
         }
 
-        await db.ref(DB_PATH).push().set({
+        const newRef = db.ref(DB_PATH).push();
+        await newRef.set({
 
             title,
 
@@ -463,7 +464,9 @@ window.AdminAnnouncements = (()=>{
             updatedAt:Date.now()
 
         });
+        
 
+      
         await logActivity(
 
             `Added announcement "${title}"`,
@@ -475,6 +478,12 @@ window.AdminAnnouncements = (()=>{
         closeModal();
 
         show("Announcement added.");
+
+          await AdminNotifier.send(
+    "announcement",
+    title,
+    newRef.key
+);
 
     }
 

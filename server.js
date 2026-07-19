@@ -8,6 +8,15 @@ import { chatHandler } from "./chatHandler.js";
 import { generateTitle } from "./titleGenerator.js";
 import { auth } from "./firebase-admin.js";
 import uploadRoutes from "./uploadRoutes.js";
+import {
+
+    registerDevice,
+
+    sendNotification,
+
+    notifyStudents
+
+} from "./notificationHandler.js";
 
 /*
 =========================================
@@ -51,6 +60,27 @@ app.use(
     )
 
 );
+
+/*
+=========================================
+REGISTER DEVICE
+=========================================
+*/
+
+app.post(
+
+    "/register-device",
+
+    registerDevice
+
+);
+
+/*
+=========================================
+SEND PUSH
+=========================================
+*/
+
 
 /*
 =========================================
@@ -206,6 +236,30 @@ app.post("/create-admin", async (req, res) => {
 
 });
 
+
+app.post("/notify", async (req, res) => {
+    try {
+        const { type, title, body, id } = req.body;
+
+        await notifyStudents({
+            title,
+            body,
+            data: {
+                type,
+                id: String(id)
+            }
+        });
+
+        res.json({ success: true });
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            success: false,
+            message: err.message
+        });
+    }
+});
 /*
 =========================================
 BOOTSTRAP ADMIN

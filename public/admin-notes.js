@@ -242,7 +242,9 @@ async function saveNote(){
 
         const upload = await uploadPDF(file);
 
-        await db.ref(DB_PATH).push().set({
+        const noteId = db.ref(DB_PATH).push();
+
+        await noteId.set({
 
             title:$("note-title").value.trim(),
 
@@ -263,13 +265,23 @@ async function saveNote(){
             uploadedAt:Date.now()
         });
 
+        
+
         loading(false);
 
+        
         await logActivity(`Uploaded note: ${noteTitle}`, "description");
 
         closeModal();
 
         show("Note uploaded successfully.");
+
+        await AdminNotifier.send(
+    "note",
+    title,
+    noteId.key
+);
+
 
     }
 
