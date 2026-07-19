@@ -1,4 +1,3 @@
-import { SpeechRecognition } from "@capacitor-community/speech-recognition";
 window.CSCAI = (() => {
     
   Portal.setCurrentPage("ai");
@@ -44,51 +43,64 @@ attach = document.getElementById("attach-btn");
 
 voice = document.getElementById("voice-btn");
 
-voice.onclick = async () => {
+if (window.NativeVoice) {
 
-    try {
+    voice.onclick = async () => {
 
-        const permission =
-            await SpeechRecognition.requestPermissions();
+        try {
 
-        if (permission.speechRecognition !== "granted") {
-            alert("Microphone permission denied.");
-            return;
+            voice.classList.add("recording");
+
+            voice.innerHTML = `
+                <span class="material-icons">
+                    stop
+                </span>
+            `;
+
+            const text =
+                await NativeVoice.start();
+
+            if (text) {
+
+                input.value = text;
+
+                input.dispatchEvent(
+                    new Event("input")
+                );
+
+            }
+
         }
 
-        voice.classList.add("listening");
+        catch (err) {
 
-        await SpeechRecognition.start({
-            language: "en-US",
-            popup: true,
-            partialResults: false
-        });
+            console.error(err);
 
-    }
+        }
 
-    catch (err) {
+        finally {
 
-        console.error(err);
+            voice.classList.remove("recording");
 
-        voice.classList.remove("listening");
+            voice.innerHTML = `
+                <span class="material-icons">
+                    mic
+                </span>
+            `;
 
-    }
+        }
 
-};
+    };
+
+}
+else {
+
+    voice.style.display = "none";
+
+}
+
 
 input.addEventListener("input", updateInputButtons);
-
-SpeechRecognition.addListener(
-    "result",
-    (data) => {
-        if (data.matches?.length) {
-            input.value = data.matches[0];
-            updateInputButtons();
-        }
-
-        voice.classList.remove("listening");
-    }
-);
 
 // Initial state
 updateInputButtons();
