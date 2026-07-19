@@ -1,0 +1,9 @@
+{
+  "appId": "com.uicsc.elite",
+  "appName": "CSC Elite",
+  "webDir": "public",
+  "server": {
+    "url": "https://ui-csc-website-main.onrender.com",
+    "cleartext": false
+  }
+}
