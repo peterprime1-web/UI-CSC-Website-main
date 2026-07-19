@@ -3622,19 +3622,11 @@ body.dark .chat-item:hover{
 }
 
 .profile-name{
-    word-wrap: break-word;
 
-    word-break: break-all;
-    overflow-wrap: break-word;
     font-size:1.8rem;
-    max-width: 100%;
+
     font-weight:700;
 
-}
-
-.right-side-info {
-  flex-shrink: 0; /* Prevents this element from squeezing into nothing */
-  text-align: right;
 }
 
 .profile-matric{
@@ -4977,7 +4969,7 @@ body.dark .course-meta span{
 
 .profile-container{
 
-    max-width: 100px;
+    max-width:1100px;
     margin:30px auto;
     display:flex;
     flex-direction:column;
@@ -5165,7 +5157,7 @@ body.dark .profile-item{
     .profile-header{
         display: flex;
         align-items: center;
-        gap: 16px;
+        gap: 16x;
         padding:28px 20px;
         flex-wrap: wrap;
 
