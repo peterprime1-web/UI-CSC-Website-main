@@ -133,7 +133,6 @@ return {
         }
 
     }
-    
 
     async function generateTitle(firstMessage){
 
