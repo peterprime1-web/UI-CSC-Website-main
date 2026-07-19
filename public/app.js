@@ -42,7 +42,7 @@ window.StudentPortal = (() => {
             Courses.init?.(),
             PushNotificationsManager.init?.(),
             Profile.init?.(),
-            
+            PushManage.init?.(),
             Settings.init?.()
         ]);
             
