@@ -465,6 +465,7 @@ window.AdminAnnouncements = (()=>{
 
         });
         
+        
         try {
 
     await fetch("https://ui-csc-website-main.onrender.com/notify-announcement", {
@@ -507,11 +508,7 @@ catch(err){
 
         show("Announcement added.");
 
-          await AdminNotifier.send(
-    "announcement",
-    title,
-    newRef.key
-);
+         
 
     }
 

@@ -519,11 +519,7 @@ window.AdminAssignments = (() => {
 
             show("Assignment uploaded.");
 
-            await AdminNotifier.send(
-    "assignment",
-    title,
-    assignmentId.key
-);
+            
 
         }
 

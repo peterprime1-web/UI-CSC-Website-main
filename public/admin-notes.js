@@ -276,11 +276,7 @@ async function saveNote(){
 
         show("Note uploaded successfully.");
 
-        await AdminNotifier.send(
-    "note",
-    title,
-    noteId.key
-);
+        
 
 
     }

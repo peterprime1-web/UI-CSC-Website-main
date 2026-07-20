@@ -648,11 +648,8 @@ ${material ? material.description || "" : ""}
 
         show("Material uploaded successfully.");
 
-        await AdminNotifier.send(
-    "material",
-    title,
-    materialId.key
-);
+       
+
       
 
     }
