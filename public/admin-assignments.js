@@ -511,6 +511,36 @@ window.AdminAssignments = (() => {
 
             });
 
+            try {
+
+    await fetch("https://ui-csc-website-main.onrender.com/notify-assignment", {
+
+        method: "POST",
+
+        headers: {
+
+            "Content-Type": "application/json"
+
+        },
+
+        body: JSON.stringify({
+
+            dueDate: $("assignment-due").value,
+
+            description: $("assignment-description").value.trim(),
+
+        })
+
+    });
+
+}
+
+catch(err){
+
+    console.error("Notification failed:", err);
+
+}
+
             
             // Log activity to Firebase
             await logActivity(`Uploaded assignment: ${titleVal} (${course.code})`, "assignment");

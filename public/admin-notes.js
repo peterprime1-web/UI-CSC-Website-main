@@ -269,6 +269,36 @@ async function saveNote(){
 
         loading(false);
 
+        try {
+
+    await fetch("https://ui-csc-website-main.onrender.com/notify-notes", {
+
+        method: "POST",
+
+        headers: {
+
+            "Content-Type": "application/json"
+
+        },
+
+        body: JSON.stringify({
+
+            title: $("note-title").value.trim(),
+
+            message: $("note-description").value.trim()
+
+        })
+
+    });
+
+}
+
+catch(err){
+
+    console.error("Notification failed:", err);
+
+}
+
         
         await logActivity(`Uploaded note: ${noteTitle}`, "description");
 

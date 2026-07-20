@@ -641,6 +641,36 @@ ${material ? material.description || "" : ""}
 
         });
 
+        try {
+
+    await fetch("https://ui-csc-website-main.onrender.com/notify-materials", {
+
+        method: "POST",
+
+        headers: {
+
+            "Content-Type": "application/json"
+
+        },
+
+        body: JSON.stringify({
+
+            title: $("material-title").value.trim(),
+
+            message: $("material-description").value.trim()
+
+        })
+
+    });
+
+}
+
+catch(err){
+
+    console.error("Notification failed:", err);
+
+}
+
 
           await logActivity(`Added learning material: ${materialTitle}`, "folder_open");
 

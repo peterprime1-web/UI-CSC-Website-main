@@ -278,6 +278,134 @@ app.post("/notify-announcement", async (req, res) => {
     }
 
 });
+
+
+app.post("/notify-assignment", async (req, res) => {
+
+    try {
+
+        const { title, message } = req.body;
+
+        await notifyStudents({
+
+            title: "📢 New Assignment",
+
+            body: dueDate,
+
+            data: {
+                type: "assignment"
+            }
+
+        });
+
+        res.json({
+
+            success: true
+
+        });
+
+    }
+
+    catch (err) {
+
+        console.error(err);
+
+        res.status(500).json({
+
+            success: false,
+
+            message: err.message
+
+        });
+
+    }
+
+});
+
+
+app.post("/notify-notes", async (req, res) => {
+
+    try {
+
+        const { title, message } = req.body;
+
+        await notifyStudents({
+
+            title: "📢 New Notes",
+
+            body: title,
+
+            data: {
+                type: "notes"
+            }
+
+        });
+
+        res.json({
+
+            success: true
+
+        });
+
+    }
+
+    catch (err) {
+
+        console.error(err);
+
+        res.status(500).json({
+
+            success: false,
+
+            message: err.message
+
+        });
+
+    }
+
+});
+
+app.post("/notify-materials", async (req, res) => {
+
+    try {
+
+        const { title, message } = req.body;
+
+        await notifyStudents({
+
+            title: "📢 New Materials",
+
+            body: title,
+
+            data: {
+                type: "materials"
+            }
+
+        });
+
+        res.json({
+
+            success: true
+
+        });
+
+    }
+
+    catch (err) {
+
+        console.error(err);
+
+        res.status(500).json({
+
+            success: false,
+
+            message: err.message
+
+        });
+
+    }
+
+});
 /*
 =========================================
 BOOTSTRAP ADMIN
