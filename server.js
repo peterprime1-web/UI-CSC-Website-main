@@ -237,28 +237,46 @@ app.post("/create-admin", async (req, res) => {
 });
 
 
-app.post("/notify", async (req, res) => {
+app.post("/notify-announcement", async (req, res) => {
+
     try {
-        const { type, title, body, id } = req.body;
+
+        const { title, message } = req.body;
 
         await notifyStudents({
-            title,
-            body,
+
+            title: "📢 New Announcement",
+
+            body: title,
+
             data: {
-                type,
-                id: String(id)
+                type: "announcement"
             }
+
         });
 
-        res.json({ success: true });
+        res.json({
 
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({
-            success: false,
-            message: err.message
+            success: true
+
         });
+
     }
+
+    catch (err) {
+
+        console.error(err);
+
+        res.status(500).json({
+
+            success: false,
+
+            message: err.message
+
+        });
+
+    }
+
 });
 /*
 =========================================

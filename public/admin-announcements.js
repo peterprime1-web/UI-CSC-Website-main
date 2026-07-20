@@ -465,7 +465,35 @@ window.AdminAnnouncements = (()=>{
 
         });
         
+        try {
 
+    await fetch("https://ui-csc-website-main.onrender.com/notify-announcement", {
+
+        method: "POST",
+
+        headers: {
+
+            "Content-Type": "application/json"
+
+        },
+
+        body: JSON.stringify({
+
+            title,
+
+            message
+
+        })
+
+    });
+
+}
+
+catch(err){
+
+    console.error("Notification failed:", err);
+
+}
       
         await logActivity(
 
