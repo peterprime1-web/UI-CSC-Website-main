@@ -18,6 +18,8 @@ import {
 
 } from "./notificationHandler.js";
 
+
+
 /*
 =========================================
 PATHS
@@ -60,6 +62,13 @@ app.use(
     )
 
 );
+
+app.get("/health", (req, res) => {
+    res.status(200).json({
+        status: "ok",
+        timestamp: Date.now()
+    });
+});
 
 /*
 =========================================
