@@ -2,8 +2,21 @@
   "appId": "com.uicsc.elite",
   "appName": "CSC Elite",
   "webDir": "public",
+
   "server": {
     "url": "https://ui-csc-website-main.onrender.com",
     "cleartext": false
+  },
+
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": false,
+      "showSpinner": true,
+      "spinnerColor": "#FFFFFF",
+      "backgroundColor": "#0B1F3A",
+      "androidScaleType": "CENTER_CROP",
+      "splashFullScreen": true,
+      "splashImmersive": true
+    }
   }
 }
