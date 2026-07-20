@@ -527,7 +527,7 @@ window.AdminAssignments = (() => {
 
             title: titleVal,
 
-            message: $("assignment-due").value
+            message: `Due: ${$("assignment-due").value}`
 
         })
 
