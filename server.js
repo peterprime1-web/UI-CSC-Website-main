@@ -290,7 +290,7 @@ app.post("/notify-assignment", async (req, res) => {
 
             title: "📢 New Assignment",
 
-            body: dueDate,
+            body: message,
 
             data: {
                 type: "assignment"

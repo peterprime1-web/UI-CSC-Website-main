@@ -525,9 +525,9 @@ window.AdminAssignments = (() => {
 
         body: JSON.stringify({
 
-            dueDate: $("assignment-due").value,
+            title: titleVal,
 
-            description: $("assignment-description").value.trim(),
+            message: $("assignment-due").value
 
         })
 

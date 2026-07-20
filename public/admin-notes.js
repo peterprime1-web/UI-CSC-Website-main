@@ -300,7 +300,7 @@ catch(err){
 }
 
         
-        await logActivity(`Uploaded note: ${noteTitle}`, "description");
+        await logActivity(`Uploaded note: ${$("note-title").value.trim()}`, "description");
 
         closeModal();
 

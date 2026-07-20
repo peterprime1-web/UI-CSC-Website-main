@@ -672,7 +672,7 @@ catch(err){
 }
 
 
-          await logActivity(`Added learning material: ${materialTitle}`, "folder_open");
+          await logActivity(`Added learning material: ${$("material-title").value.trim()}`, "folder_open");
 
         closeModal();
 
