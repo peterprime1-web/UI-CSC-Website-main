@@ -1,9 +1,0 @@
-{
-  "appId": "com.uicsc.elite",
-  "appName": "CSC Elite",
-  "webDir": "public",
-  "server": {
-    "url": "https://csc-loader.vercel.app/",
-    "cleartext": false
-  }
-}
